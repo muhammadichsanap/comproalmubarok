@@ -12,11 +12,7 @@
 
 
 
-<li class="nav-item">
-    <a href="{{ route('ekstrakulikulers.index') }}"
-       class="nav-link {{ Request::is('ekstrakulikulers*') ? 'active' : '' }}">
-        <p>Ekstrakulikulers</p>
-    </a>
-</li>
+
+
 
 

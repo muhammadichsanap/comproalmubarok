@@ -52,4 +52,9 @@ Route::resource('sekolahs', App\Http\Controllers\SekolahController::class);
 
 
 
-Route::resource('ekstrakulikulers', App\Http\Controllers\EkstrakulikulerController::class);
+
+
+
+
+
+

@@ -37,24 +37,26 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
-
-
-
-
-
-
-
-
 Route::resource('sekolahs', App\Http\Controllers\SekolahController::class);
 
+Route::resource('ekstrakulikulers', App\Http\Controllers\EkstrakulikulerController::class);
+
+Route::resource('fasilitas', App\Http\Controllers\FasilitasController::class);
+
+Route::resource('tendiks', App\Http\Controllers\TendikController::class);
+
+Route::resource('programs', App\Http\Controllers\ProgramController::class);
+
+Route::resource('hargas', App\Http\Controllers\HargaController::class);
+
+Route::resource('alumnis', App\Http\Controllers\AlumniController::class);
+
+Route::resource('prestasis', App\Http\Controllers\PrestasiController::class);
+
+Route::resource('visiMisis', App\Http\Controllers\Visi_misiController::class);
+
+Route::resource('videos', App\Http\Controllers\VideoController::class);
 
 
 
-
-
-
-
-
-
-
-
+Route::resource('siswas', App\Http\Controllers\SiswaController::class);

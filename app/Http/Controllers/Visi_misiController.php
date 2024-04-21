@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateVisi_misiRequest;
 use App\Repositories\Visi_misiRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class Visi_misiController extends AppBaseController

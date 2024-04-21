@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateHargaRequest;
 use App\Repositories\HargaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class HargaController extends AppBaseController

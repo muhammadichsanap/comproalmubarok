@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateEkstrakulikulerRequest;
 use App\Repositories\EkstrakulikulerRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class EkstrakulikulerController extends AppBaseController

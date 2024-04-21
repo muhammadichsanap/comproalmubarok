@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CompanyProfileController; // Added for Company Profile
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,3 +61,10 @@ Route::resource('videos', App\Http\Controllers\VideoController::class);
 
 
 Route::resource('siswas', App\Http\Controllers\SiswaController::class);
+
+Route::get('/header', [App\Http\Controllers\FrontendController::class, 'header']);
+
+Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer']);
+
+
+Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);

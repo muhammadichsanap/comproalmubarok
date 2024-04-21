@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateSiswaRequest;
 use App\Repositories\SiswaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class SiswaController extends AppBaseController

@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateProgramRequest;
 use App\Repositories\ProgramRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class ProgramController extends AppBaseController

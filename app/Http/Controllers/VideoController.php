@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateVideoRequest;
 use App\Repositories\VideoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class VideoController extends AppBaseController

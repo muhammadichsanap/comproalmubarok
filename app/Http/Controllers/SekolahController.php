@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateSekolahRequest;
 use App\Repositories\SekolahRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class SekolahController extends AppBaseController

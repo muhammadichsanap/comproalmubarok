@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateAlumniRequest;
 use App\Repositories\AlumniRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class AlumniController extends AppBaseController

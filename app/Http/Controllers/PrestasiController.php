@@ -7,7 +7,7 @@ use App\Http\Requests\UpdatePrestasiRequest;
 use App\Repositories\PrestasiRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class PrestasiController extends AppBaseController

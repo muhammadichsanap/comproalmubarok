@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateTendikRequest;
 use App\Repositories\TendikRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 use Response;
 
 class TendikController extends AppBaseController

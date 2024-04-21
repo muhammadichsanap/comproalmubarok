@@ -103,3 +103,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('kegiatans.index') }}"
+       class="nav-link {{ Request::is('kegiatans*') ? 'active' : '' }}">
+        <p>Kegiatans</p>
+    </a>
+</li>
+
+

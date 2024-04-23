@@ -199,7 +199,7 @@
                 <p class="lh-1">Pada saat ini SD IT AL Mubarokah masih menggunakan</p>
                 <p class="lh-1">program kurikulum belajar SD 2013. SD IT AL Mubarokah</p>
                 <p class="lh-1">berada di bawah naungan kepala sekolah dengan nama</p>
-                <p class="lh-1">Muhamad Firdaus dan operator sekolah Doni Hanapi</p>
+                <p class="lh-1">Muhamad Firdaus dan operator sekolah Doni Hanapi.</p>
             </div>
             <div class="col-lg-6 mb-3">
                 <h5>Info Sekolah</h5>

@@ -4,6 +4,7 @@
         <tr>
             <th>Visi</th>
         <th>Misi</th>
+        <th>Tentang</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -12,6 +13,7 @@
             <tr>
                 <td>{{ $visiMisi->visi }}</td>
             <td>{{ $visiMisi->misi }}</td>
+            <td>{{ $visiMisi->tentang }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['visiMisis.destroy', $visiMisi->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

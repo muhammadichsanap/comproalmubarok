@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class SekolahRepository
  * @package App\Repositories
- * @version March 29, 2024, 11:19 am UTC
+ * @version April 25, 2024, 11:58 am UTC
 */
 
 class SekolahRepository extends BaseRepository
@@ -24,7 +24,8 @@ class SekolahRepository extends BaseRepository
         'jumlah_siswa',
         'jam_belajar',
         'no_wa',
-        'email'
+        'email',
+        'gambar'
     ];
 
     /**

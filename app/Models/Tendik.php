@@ -2,30 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Tendik
  * @package App\Models
- * @version March 29, 2024, 12:35 pm UTC
+ * @version April 25, 2024, 11:50 am UTC
  *
  * @property string $nama_pendidik
  * @property string $jabatan_pendidik
+ * @property string $gambar
  */
 class Tendik extends Model
 {
 
 
-    public $table = 'tendiks';
+    public $table = 'Tendik';
     
 
 
 
     public $fillable = [
         'nama_pendidik',
-        'jabatan_pendidik'
+        'jabatan_pendidik',
+        'gambar'
     ];
 
     /**
@@ -36,7 +38,8 @@ class Tendik extends Model
     protected $casts = [
         'id' => 'integer',
         'nama_pendidik' => 'string',
-        'jabatan_pendidik' => 'string'
+        'jabatan_pendidik' => 'string',
+        'gambar' => 'string'
     ];
 
     /**

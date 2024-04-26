@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Kegiatan
  * @package App\Models
- * @version April 19, 2024, 9:01 pm UTC
+ * @version April 25, 2024, 11:53 am UTC
  *
  * @property string $nama_kegiatan
  * @property string $keterangan
@@ -19,7 +19,7 @@ class Kegiatan extends Model
 {
 
 
-    public $table = 'kegiatans';
+    public $table = 'Kegiatan';
     
 
 

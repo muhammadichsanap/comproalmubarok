@@ -16,6 +16,12 @@
     <p>{{ $visiMisi->misi }}</p>
 </div>
 
+<!-- Tentang Field -->
+<div class="col-sm-12">
+    {!! Form::label('tentang', 'Tentang:') !!}
+    <p>{{ $visiMisi->tentang }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="col-sm-12">
     {!! Form::label('created_at', 'Created At:') !!}

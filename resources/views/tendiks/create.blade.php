@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'tendiks.store']) !!}
+            {!! Form::open(['route' => 'tendiks.store', 'files' => true]) !!}
 
             <div class="card-body">
 

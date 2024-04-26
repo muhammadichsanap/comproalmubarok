@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKegiatansTable extends Migration
+class CreatePrestasiTable extends Migration
 {
 
     /**
@@ -14,10 +14,10 @@ class CreateKegiatansTable extends Migration
      */
     public function up()
     {
-        Schema::create('kegiatans', function (Blueprint $table) {
+        Schema::create('Prestasi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_kegiatan');
-            $table->string('keterangan');
+            $table->string('nama_siswa');
+            $table->string('prestasi');
             $table->string('gambar');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateKegiatansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kegiatans');
+        Schema::drop('Prestasi');
     }
 }

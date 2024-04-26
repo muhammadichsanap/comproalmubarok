@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($tendik, ['route' => ['tendiks.update', $tendik->id], 'method' => 'patch']) !!}
+            {!! Form::model($tendik, ['route' => ['tendiks.update', $tendik->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
                 <div class="row">

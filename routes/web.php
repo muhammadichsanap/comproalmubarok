@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CompanyProfileController; // Added for Company Profile
+use App\Http\Controllers\SiswaController;
+use App\Models\Siswa;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,9 +65,17 @@ Route::resource('videos', App\Http\Controllers\VideoController::class);
 
 Route::resource('siswas', App\Http\Controllers\SiswaController::class);
 
+Route::get('/siswas/import', [SiswaController::class, 'showImportForm'])->name('siswas.import');
+Route::post('/siswas/import', [SiswaController::class, 'importExcelData'])->name('siswas.import');
+
 Route::get('/header', [App\Http\Controllers\FrontendController::class, 'header']);
 
 Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer']);
 
 
 Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
+
+
+
+
+Route::resource('visiMisis', App\Http\Controllers\Visi_misiController::class);

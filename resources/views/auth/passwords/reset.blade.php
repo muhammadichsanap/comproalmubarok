@@ -49,15 +49,15 @@
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <div class="input-group mb-3">
-                    <input type="email"
-                           name="email"
-                           value="{{ $email ?? old('email') }}"
-                           class="form-control @error('email') is-invalid @enderror"
-                           placeholder="Email">
+                    <input type="text"
+                           name="name"
+                           value="{{ $name ?? old('name') }}"
+                           class="form-control @error('name') is-invalid @enderror"
+                           placeholder="Name">
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-envelope"></span></div>
                     </div>
-                    @error('email')
+                    @error('name')
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>

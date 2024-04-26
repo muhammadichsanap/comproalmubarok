@@ -9,6 +9,9 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use Response;
+use App\Imports\SiswaImport; // Sesuaikan namespace
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Siswa;
 
 class SiswaController extends AppBaseController
 {
@@ -61,26 +64,6 @@ class SiswaController extends AppBaseController
         Flash::success('Siswa saved successfully.');
 
         return redirect(route('siswas.index'));
-    }
-
-    /**
-     * Display the specified Siswa.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        $siswa = $this->siswaRepository->find($id);
-
-        if (empty($siswa)) {
-            Flash::error('Siswa not found');
-
-            return redirect(route('siswas.index'));
-        }
-
-        return view('siswas.show')->with('siswa', $siswa);
     }
 
     /**
@@ -152,5 +135,26 @@ class SiswaController extends AppBaseController
         Flash::success('Siswa deleted successfully.');
 
         return redirect(route('siswas.index'));
+    }
+    
+    public function showImportForm()
+    {
+        return view('siswas.import');
+    }
+
+    // Metode untuk menangani proses impor data dari file CSV
+    public function importExcelData(Request $request)
+    {
+        $request->validate([
+            'import_file' => ['required', 'file', 'mimes:csv,txt']
+        ]);
+
+        // Proses impor
+        try {
+            Excel::import(new SiswaImport, $request->file('import_file'));
+            return redirect()->route('siswas.index')->with('success', 'Data imported successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error importing data: ' . $e->getMessage());
+        }
     }
 }

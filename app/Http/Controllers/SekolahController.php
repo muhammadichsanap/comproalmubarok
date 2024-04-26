@@ -7,8 +7,10 @@ use App\Http\Requests\UpdateSekolahRequest;
 use App\Repositories\SekolahRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Laracasts\Flash\Flash;
 use Response;
+
 
 class SekolahController extends AppBaseController
 {
@@ -55,6 +57,20 @@ class SekolahController extends AppBaseController
     public function store(CreateSekolahRequest $request)
     {
         $input = $request->all();
+        
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+            
+            if ($extension != 'png' && $extension != 'jpg' && $extension != 'jpeg') {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG atau JPEG.');
+                return redirect()->back();
+            }
+
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
 
         $sekolah = $this->sekolahRepository->create($input);
 
@@ -117,11 +133,31 @@ class SekolahController extends AppBaseController
 
         if (empty($sekolah)) {
             Flash::error('Sekolah not found');
-
             return redirect(route('sekolahs.index'));
         }
 
-        $sekolah = $this->sekolahRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+            
+            if ($extension != 'png' && $extension != 'jpg' && $extension != 'jpeg') {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG.');
+                return redirect()->back();
+            }
+
+            // Hapus gambar lama jika ada
+            if (file_exists(public_path('images/' . $sekolah->gambar))) {
+                File::delete(public_path('images/' . $sekolah->gambar));
+            }
+
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
+
+        $this->sekolahRepository->update($input, $id);
 
         Flash::success('Sekolah updated successfully.');
 

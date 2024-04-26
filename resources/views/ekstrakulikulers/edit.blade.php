@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($ekstrakulikuler, ['route' => ['ekstrakulikulers.update', $ekstrakulikuler->id], 'method' => 'patch']) !!}
+            {!! Form::model($ekstrakulikuler, ['route' => ['ekstrakulikulers.update', $ekstrakulikuler->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
                 <div class="row">

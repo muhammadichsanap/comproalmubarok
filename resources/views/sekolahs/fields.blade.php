@@ -25,7 +25,7 @@
 <!-- Jumlah Siswa Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jumlah_siswa', 'Jumlah Siswa:') !!}
-    {!! Form::text('jumlah_siswa', null, ['class' => 'form-control']) !!}
+    {!! Form::number('jumlah_siswa', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Jam Belajar Field -->
@@ -45,3 +45,15 @@
     {!! Form::label('email', 'Email:') !!}
     {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Gambar Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('gambar', 'Gambar:') !!}
+    <div class="input-group">
+        <div class="custom-file">
+            {!! Form::file('gambar', ['class' => 'custom-file-input']) !!}
+            {!! Form::label('gambar', 'Choose file', ['class' => 'custom-file-label']) !!}
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

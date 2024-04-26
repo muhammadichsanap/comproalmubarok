@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFasilitasTable extends Migration
+class CreateVisiMisiTable extends Migration
 {
 
     /**
@@ -14,11 +14,11 @@ class CreateFasilitasTable extends Migration
      */
     public function up()
     {
-        Schema::create('fasilitas', function (Blueprint $table) {
+        Schema::create('Visi_misi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_fasilitas');
-            $table->string('keterangan_fasilitas');
-            $table->integer('jumlah_fasilitas');
+            $table->string('visi');
+            $table->string('misi');
+            $table->string('tentang');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateFasilitasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('fasilitas');
+        Schema::drop('Visi_misi');
     }
 }

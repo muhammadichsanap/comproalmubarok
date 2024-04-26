@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTendiksTable extends Migration
+class CreateVideoTable extends Migration
 {
 
     /**
@@ -14,10 +14,10 @@ class CreateTendiksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tendiks', function (Blueprint $table) {
+        Schema::create('Video', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_pendidik');
-            $table->string('jabatan_pendidik');
+            $table->string('link_url');
+            $table->string('judul_video');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTendiksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tendiks');
+        Schema::drop('Video');
     }
 }

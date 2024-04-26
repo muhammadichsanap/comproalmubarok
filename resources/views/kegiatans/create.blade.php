@@ -20,22 +20,11 @@
             {!! Form::open(['route' => 'kegiatans.store', 'files' => true]) !!}
 
             <div class="card-body">
+
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('nama_kegiatan', 'Nama Kegiatan:') !!}
-                            {!! Form::text('nama_kegiatan', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('keterangan', 'Keterangan:') !!}
-                            {!! Form::textarea('keterangan', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('gambar', 'Gambar:') !!}
-                            {!! Form::file('gambar', ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
+                    @include('kegiatans.fields')
                 </div>
+
             </div>
 
             <div class="card-footer">

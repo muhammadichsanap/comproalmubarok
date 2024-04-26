@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'ekstrakulikulers.store']) !!}
+            {!! Form::open(['route' => 'ekstrakulikulers.store', 'files' => true]) !!}
 
             <div class="card-body">
 

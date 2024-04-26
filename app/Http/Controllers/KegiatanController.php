@@ -12,7 +12,6 @@ use Response;
 
 class KegiatanController extends AppBaseController
 {
-
     /** @var KegiatanRepository $kegiatanRepository*/
     private $kegiatanRepository;
 
@@ -56,14 +55,6 @@ class KegiatanController extends AppBaseController
     public function store(CreateKegiatanRequest $request)
     {
         $input = $request->all();
-
-        // Upload image
-        if ($request->hasFile('gambar')) {
-            $image = $request->file('gambar');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $input['gambar'] = 'images/' . $imageName;
-        }
 
         $kegiatan = $this->kegiatanRepository->create($input);
 
@@ -126,23 +117,11 @@ class KegiatanController extends AppBaseController
 
         if (empty($kegiatan)) {
             Flash::error('Kegiatan not found');
+
             return redirect(route('kegiatans.index'));
         }
 
-        $input = $request->all();
-
-        // Check if a new image is uploaded
-        if ($request->hasFile('gambar')) {
-            $image = $request->file('gambar');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $input['gambar'] = 'images/' . $imageName;
-
-            // Delete old image if needed
-            // Example: unlink(public_path($kegiatan->gambar));
-        }
-
-        $kegiatan = $this->kegiatanRepository->update($input, $id);
+        $kegiatan = $this->kegiatanRepository->update($request->all(), $id);
 
         Flash::success('Kegiatan updated successfully.');
 

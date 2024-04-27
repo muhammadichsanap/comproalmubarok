@@ -37,18 +37,8 @@
 <!-- Tanggal Lahir Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('tanggal_lahir', 'Tanggal Lahir:') !!}
-    {!! Form::text('tanggal_lahir', null, ['class' => 'form-control','id'=>'tanggal_lahir']) !!}
+    {!! Form::text('tanggal_lahir', null, ['class' => 'form-control']) !!}
 </div>
-
-@push('page_scripts')
-    <script type="text/javascript">
-        $('#tanggal_lahir').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: true,
-            sideBySide: true
-        })
-    </script>
-@endpush
 
 <!-- Nik Field -->
 <div class="form-group col-sm-6">

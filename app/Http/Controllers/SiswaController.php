@@ -12,6 +12,7 @@ use Response;
 use App\Imports\SiswaImport; // Sesuaikan namespace
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\Log;
 
 class SiswaController extends AppBaseController
 {
@@ -136,25 +137,48 @@ class SiswaController extends AppBaseController
 
         return redirect(route('siswas.index'));
     }
-    
-    public function showImportForm()
-    {
-        return view('siswas.import');
+
+    // Tambahkan method importexcel di dalam SiswaController
+    public function importexcel(Request $request){
+        if ($request->hasFile('file')) {
+            $data = $request->file('file');
+            $namafile = $data->getClientOriginalName();
+
+            // Membuat direktori jika tidak ada
+            $targetDir = 'Siswadata';
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
+
+            // Menentukan path tujuan
+            $destinationPath = public_path($targetDir . '/' . $namafile);
+
+            // Memindahkan file
+            if ($data->move($targetDir, $namafile)) {
+                Excel::import(new SiswaImport, $destinationPath);
+                Flash::success('File berhasil diimpor.');
+            } else {
+                Flash::error('Gagal memindahkan file.');
+            }
+
+            return redirect()->back();
+        } else {
+            Flash::error('File tidak ditemukan.');
+            return redirect()->back();
+        }
     }
 
-    // Metode untuk menangani proses impor data dari file CSV
-    public function importExcelData(Request $request)
+    // Method show untuk menampilkan detail siswa
+    public function show($id)
     {
-        $request->validate([
-            'import_file' => ['required', 'file', 'mimes:csv,txt']
-        ]);
+        $siswa = $this->siswaRepository->find($id);
 
-        // Proses impor
-        try {
-            Excel::import(new SiswaImport, $request->file('import_file'));
-            return redirect()->route('siswas.index')->with('success', 'Data imported successfully.');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error importing data: ' . $e->getMessage());
+        if (empty($siswa)) {
+            Flash::error('Siswa not found');
+
+            return redirect(route('siswas.index'));
         }
+
+        return view('siswas.show')->with('siswa', $siswa);
     }
 }

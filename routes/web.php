@@ -65,8 +65,7 @@ Route::resource('videos', App\Http\Controllers\VideoController::class);
 
 Route::resource('siswas', App\Http\Controllers\SiswaController::class);
 
-Route::get('/siswas/import', [SiswaController::class, 'showImportForm'])->name('siswas.import');
-Route::post('/siswas/import', [SiswaController::class, 'importExcelData'])->name('siswas.import');
+Route::post('/importexcel', [SiswaController::class, 'importexcel'])->name('importexcel');
 
 Route::get('/header', [App\Http\Controllers\FrontendController::class, 'header']);
 
@@ -79,3 +78,4 @@ Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
 
 
 Route::resource('visiMisis', App\Http\Controllers\Visi_misiController::class);
+

@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Siswa
  * @package App\Models
- * @version March 29, 2024, 2:18 pm UTC
+ * @version April 27, 2024, 7:23 am UTC
  *
  * @property string $rombel
  * @property string $nama
@@ -34,7 +34,7 @@ class Siswa extends Model
 {
 
 
-    public $table = 'siswas';
+    public $table = 'Siswa';
     
 
 
@@ -73,7 +73,7 @@ class Siswa extends Model
         'jk' => 'string',
         'nisn' => 'string',
         'tempat_lahir' => 'string',
-        'tanggal_lahir' => 'date',
+        'tanggal_lahir' => 'string',
         'nik' => 'string',
         'agama' => 'string',
         'alamat' => 'string',

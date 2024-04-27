@@ -97,3 +97,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('siswas.index') }}"
+       class="nav-link {{ Request::is('siswas*') ? 'active' : '' }}">
+        <p>Siswas</p>
+    </a>
+</li>
+
+

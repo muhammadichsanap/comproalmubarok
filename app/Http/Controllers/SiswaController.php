@@ -140,19 +140,24 @@ class SiswaController extends AppBaseController
 
     // Tambahkan method importexcel di dalam SiswaController
     public function importexcel(Request $request){
+        // Validasi untuk memastikan file yang di-upload adalah file Excel
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv'
+        ]);
+    
         if ($request->hasFile('file')) {
             $data = $request->file('file');
             $namafile = $data->getClientOriginalName();
-
+    
             // Membuat direktori jika tidak ada
             $targetDir = 'Siswadata';
             if (!file_exists($targetDir)) {
                 mkdir($targetDir, 0777, true);
             }
-
+    
             // Menentukan path tujuan
             $destinationPath = public_path($targetDir . '/' . $namafile);
-
+    
             // Memindahkan file
             if ($data->move($targetDir, $namafile)) {
                 Excel::import(new SiswaImport, $destinationPath);
@@ -160,7 +165,7 @@ class SiswaController extends AppBaseController
             } else {
                 Flash::error('Gagal memindahkan file.');
             }
-
+    
             return redirect()->back();
         } else {
             Flash::error('File tidak ditemukan.');

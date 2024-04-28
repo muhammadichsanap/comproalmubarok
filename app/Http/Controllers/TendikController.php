@@ -55,11 +55,25 @@ class TendikController extends AppBaseController
     public function store(CreateTendikRequest $request)
     {
         $input = $request->all();
-
+    
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+    
+            if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG');
+                return redirect()->back();
+            }
+    
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
+    
         $tendik = $this->tendikRepository->create($input);
-
-        Flash::success('Tendik saved successfully.');
-
+    
+        Flash::success('Tendik berhasil disimpan.');
+    
         return redirect(route('tendiks.index'));
     }
 
@@ -114,17 +128,32 @@ class TendikController extends AppBaseController
     public function update($id, UpdateTendikRequest $request)
     {
         $tendik = $this->tendikRepository->find($id);
-
+    
         if (empty($tendik)) {
             Flash::error('Tendik not found');
-
             return redirect(route('tendiks.index'));
         }
-
-        $tendik = $this->tendikRepository->update($request->all(), $id);
-
+    
+        $input = $request->all();
+    
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+    
+            if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG');
+                return redirect()->back();
+            }
+    
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
+    
+        $this->tendikRepository->update($input, $id);
+    
         Flash::success('Tendik updated successfully.');
-
+    
         return redirect(route('tendiks.index'));
     }
 

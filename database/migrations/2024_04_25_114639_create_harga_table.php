@@ -16,16 +16,16 @@ class CreateHargaTable extends Migration
     {
         Schema::create('Harga', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pengembangan');
-            $table->integer('pemeliharaan_gedung');
-            $table->integer('peningkatan_mutu');
-            $table->integer('kegiatan_belajar');
-            $table->integer('buku_paket');
-            $table->integer('seragam_putra');
-            $table->integer('seragam_putri');
-            $table->integer('spp');
-            $table->integer('total_putra');
-            $table->integer('total_putri');
+            $table->biginteger('pengembangan')->nullable();;
+            $table->biginteger('pemeliharaan_gedung')->nullable();
+            $table->biginteger('peningkatan_mutu')->nullable();
+            $table->biginteger('kegiatan_belajar')->nullable();
+            $table->biginteger('buku_paket')->nullable();
+            $table->biginteger('seragam_putra')->nullable();
+            $table->biginteger('seragam_putri')->nullable();
+            $table->biginteger('spp')->nullable();
+            $table->biginteger('total_putra')->nullable();
+            $table->biginteger('total_putri')->nullable();
             $table->timestamps();
         });
     }

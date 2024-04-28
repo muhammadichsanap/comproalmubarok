@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEkstrakulikulerTable extends Migration
+class CreateProgramTable extends Migration
 {
 
     /**
@@ -14,11 +14,9 @@ class CreateEkstrakulikulerTable extends Migration
      */
     public function up()
     {
-        Schema::create('Ekstrakulikuler', function (Blueprint $table) {
+        Schema::create('Program', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_ekstrakulikuler')->nullable();
-            $table->string('keterangan_fasilitas')->nullable();
-            $table->string('gambar')->nullable();
+            $table->string('nama_program')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateEkstrakulikulerTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Ekstrakulikuler');
+        Schema::drop('Program');
     }
 }

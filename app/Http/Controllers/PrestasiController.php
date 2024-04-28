@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use Response;
+use Illuminate\Support\Facades\File;
 
 class PrestasiController extends AppBaseController
 {
@@ -55,11 +56,25 @@ class PrestasiController extends AppBaseController
     public function store(CreatePrestasiRequest $request)
     {
         $input = $request->all();
-
+    
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+    
+            if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG');
+                return redirect()->back();
+            }
+    
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
+    
         $prestasi = $this->prestasiRepository->create($input);
-
+    
         Flash::success('Prestasi saved successfully.');
-
+    
         return redirect(route('prestasis.index'));
     }
 
@@ -114,17 +129,32 @@ class PrestasiController extends AppBaseController
     public function update($id, UpdatePrestasiRequest $request)
     {
         $prestasi = $this->prestasiRepository->find($id);
-
+    
         if (empty($prestasi)) {
             Flash::error('Prestasi not found');
-
             return redirect(route('prestasis.index'));
         }
-
-        $prestasi = $this->prestasiRepository->update($request->all(), $id);
-
+    
+        $input = $request->all();
+    
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+    
+            if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG');
+                return redirect()->back();
+            }
+    
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
+    
+        $this->prestasiRepository->update($input, $id);
+    
         Flash::success('Prestasi updated successfully.');
-
+    
         return redirect(route('prestasis.index'));
     }
 

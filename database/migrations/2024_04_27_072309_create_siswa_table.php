@@ -16,24 +16,24 @@ class CreateSiswaTable extends Migration
     {
         Schema::create('Siswa', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('rombel');
-            $table->string('nama');
-            $table->string('nipd');
-            $table->string('jk');
-            $table->string('nisn');
-            $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
-            $table->string('nik');
-            $table->string('agama');
-            $table->string('alamat');
-            $table->string('kelurahan');
-            $table->string('kecamatan');
-            $table->string('hp');
-            $table->string('data_ayah');
-            $table->string('data_ibu');
-            $table->string('no_kk');
-            $table->string('berat_badan');
-            $table->string('tinggi_badan');
+            $table->string('rombel')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('nipd')->nullable();
+            $table->string('jk')->nullable();
+            $table->string('nisn')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('tanggal_lahir')->nullable();
+            $table->string('nik')->nullable();
+            $table->string('agama')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('kelurahan')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('hp')->nullable();
+            $table->string('data_ayah')->nullable();
+            $table->string('data_ibu')->nullable();
+            $table->string('no_kk')->nullable();
+            $table->string('berat_badan')->nullable();
+            $table->string('tinggi_badan')->nullable();
             $table->timestamps();
         });
     }

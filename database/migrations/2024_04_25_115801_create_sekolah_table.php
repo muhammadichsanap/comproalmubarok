@@ -16,15 +16,15 @@ class CreateSekolahTable extends Migration
     {
         Schema::create('Sekolah', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_sekolah');
-            $table->string('alamat_sekolah');
-            $table->string('akreditasi');
-            $table->string('kurikulum');
-            $table->integer('jumlah_siswa');
-            $table->string('jam_belajar');
-            $table->string('no_wa');
-            $table->string('email');
-            $table->string('gambar');
+            $table->string('nama_sekolah')->nullable();
+            $table->string('alamat_sekolah')->nullable();
+            $table->string('akreditasi')->nullable();
+            $table->string('kurikulum')->nullable();
+            $table->integer('jumlah_siswa')->nullable();
+            $table->string('jam_belajar')->nullable();
+            $table->string('no_wa')->nullable();
+            $table->string('email')->nullable();
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

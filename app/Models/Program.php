@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
+
 
 
 /**
  * Class Program
  * @package App\Models
- * @version April 25, 2024, 11:53 am UTC
+ * @version April 28, 2024, 4:00 pm UTC
  *
  * @property string $nama_program
  */

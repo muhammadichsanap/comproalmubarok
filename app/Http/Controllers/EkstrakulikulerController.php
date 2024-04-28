@@ -55,11 +55,25 @@ class EkstrakulikulerController extends AppBaseController
     public function store(CreateEkstrakulikulerRequest $request)
     {
         $input = $request->all();
-
+    
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+    
+            if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG');
+                return redirect()->back();
+            }
+    
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
+    
         $ekstrakulikuler = $this->ekstrakulikulerRepository->create($input);
-
-        Flash::success('Ekstrakulikuler saved successfully.');
-
+    
+        Flash::success('Ekstrakulikuler berhasil disimpan.');
+    
         return redirect(route('ekstrakulikulers.index'));
     }
 
@@ -114,17 +128,32 @@ class EkstrakulikulerController extends AppBaseController
     public function update($id, UpdateEkstrakulikulerRequest $request)
     {
         $ekstrakulikuler = $this->ekstrakulikulerRepository->find($id);
-
+    
         if (empty($ekstrakulikuler)) {
-            Flash::error('Ekstrakulikuler not found');
-
-            return redirect(route('ekstrakulikulers.index'));
+            Flash::error('ekstrakulikuler not found');
+            return redirect(route('ekstrakulikuler.index'));
         }
-
-        $ekstrakulikuler = $this->ekstrakulikulerRepository->update($request->all(), $id);
-
-        Flash::success('Ekstrakulikuler updated successfully.');
-
+    
+        $input = $request->all();
+    
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $extension = $image->getClientOriginalExtension();
+    
+            if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
+                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG');
+                return redirect()->back();
+            }
+    
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('images'), $imageName);
+            $input['gambar'] = $imageName;
+        }
+    
+        $this->ekstrakulikulerRepository->update($input, $id);
+    
+        Flash::success('Ekstrakulikuler berhasil diperbarui.');
+    
         return redirect(route('ekstrakulikulers.index'));
     }
 

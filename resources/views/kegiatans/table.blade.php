@@ -13,7 +13,13 @@
             <tr>
                 <td>{{ $kegiatan->nama_kegiatan }}</td>
             <td>{{ $kegiatan->keterangan }}</td>
-            <td>{{ $kegiatan->gambar }}</td>
+            <td>
+                @if($kegiatan->gambar)
+                    <img src="{{ asset('images/'.$kegiatan->gambar) }}" alt="Gambar Kegiatan" style="max-width: 100px;">
+                @else
+                    <p>No image available</p>
+                @endif
+            </td>
                 <td width="120">
                     {!! Form::open(['route' => ['kegiatans.destroy', $kegiatan->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

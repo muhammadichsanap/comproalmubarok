@@ -16,9 +16,9 @@ class CreatePrestasiTable extends Migration
     {
         Schema::create('Prestasi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_siswa');
-            $table->string('prestasi');
-            $table->string('gambar');
+            $table->string('nama_siswa')->nullable();
+            $table->string('prestasi')->nullable();
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

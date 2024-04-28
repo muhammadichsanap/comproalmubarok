@@ -16,9 +16,9 @@ class CreateTendikTable extends Migration
     {
         Schema::create('Tendik', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_pendidik');
-            $table->string('jabatan_pendidik');
-            $table->string('gambar');
+            $table->string('nama_pendidik')->nullable();
+            $table->string('jabatan_pendidik')->nullable();
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

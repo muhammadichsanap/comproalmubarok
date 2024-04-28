@@ -13,7 +13,13 @@
             <tr>
                 <td>{{ $ekstrakulikuler->nama_ekstrakulikuler }}</td>
             <td>{{ $ekstrakulikuler->keterangan_fasilitas }}</td>
-            <td>{{ $ekstrakulikuler->gambar }}</td>
+            <td>
+                @if($ekstrakulikuler->gambar)
+                    <img src="{{ asset('images/'.$ekstrakulikuler->gambar) }}" alt="Gambar ekstrakulikuler" style="max-width: 100px;">
+                @else
+                    <p>No image available</p>
+                @endif
+            </td>
                 <td width="120">
                     {!! Form::open(['route' => ['ekstrakulikulers.destroy', $ekstrakulikuler->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

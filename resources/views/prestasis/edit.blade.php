@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($prestasi, ['route' => ['prestasis.update', $prestasi->id], 'method' => 'patch']) !!}
+            {!! Form::model($prestasi, ['route' => ['prestasis.update', $prestasi->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
                 <div class="row">

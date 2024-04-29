@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class PrestasiRepository
  * @package App\Repositories
- * @version March 29, 2024, 1:04 pm UTC
+ * @version April 25, 2024, 11:48 am UTC
 */
 
 class PrestasiRepository extends BaseRepository
@@ -18,7 +18,8 @@ class PrestasiRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'nama_siswa',
-        'prestasi'
+        'prestasi',
+        'gambar'
     ];
 
     /**

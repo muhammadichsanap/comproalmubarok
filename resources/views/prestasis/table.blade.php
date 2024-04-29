@@ -4,6 +4,7 @@
         <tr>
             <th>Nama Siswa</th>
         <th>Prestasi</th>
+        <th>Gambar</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -12,6 +13,7 @@
             <tr>
                 <td>{{ $prestasi->nama_siswa }}</td>
             <td>{{ $prestasi->prestasi }}</td>
+            <td>{{ $prestasi->gambar }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['prestasis.destroy', $prestasi->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Video
  * @package App\Models
- * @version March 29, 2024, 1:12 pm UTC
+ * @version April 25, 2024, 11:49 am UTC
  *
  * @property string $link_url
  * @property string $judul_video
@@ -18,7 +18,7 @@ class Video extends Model
 {
 
 
-    public $table = 'videos';
+    public $table = 'Video';
     
 
 

@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class EkstrakulikulerRepository
  * @package App\Repositories
- * @version March 29, 2024, 12:23 pm UTC
+ * @version April 25, 2024, 11:52 am UTC
 */
 
 class EkstrakulikulerRepository extends BaseRepository
@@ -18,7 +18,8 @@ class EkstrakulikulerRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'nama_ekstrakulikuler',
-        'keterangan_ekstrakulikuler'
+        'keterangan_fasilitas',
+        'gambar'
     ];
 
     /**

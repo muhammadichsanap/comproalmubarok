@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'prestasis.store']) !!}
+            {!! Form::open(['route' => 'prestasis.store', 'files' => true]) !!}
 
             <div class="card-body">
 

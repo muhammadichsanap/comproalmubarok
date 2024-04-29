@@ -2,18 +2,18 @@
     <table class="table" id="tendiks-table">
         <thead>
         <tr>
-            <th>Id</th>
-        <th>Nama Pendidik</th>
+            <th>Nama Pendidik</th>
         <th>Jabatan Pendidik</th>
+        <th>Gambar</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>
         <tbody>
         @foreach($tendiks as $tendik)
             <tr>
-                <td>{{ $tendik->id }}</td>
-            <td>{{ $tendik->nama_pendidik }}</td>
+                <td>{{ $tendik->nama_pendidik }}</td>
             <td>{{ $tendik->jabatan_pendidik }}</td>
+            <td>{{ $tendik->gambar }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['tendiks.destroy', $tendik->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

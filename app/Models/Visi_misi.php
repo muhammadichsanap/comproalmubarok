@@ -2,30 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Visi_misi
  * @package App\Models
- * @version March 29, 2024, 1:11 pm UTC
+ * @version April 25, 2024, 1:22 pm UTC
  *
  * @property string $visi
  * @property string $misi
+ * @property string $tentang
  */
 class Visi_misi extends Model
 {
 
 
-    public $table = 'visi_misis';
+    public $table = 'Visi_misi';
     
 
 
 
     public $fillable = [
         'visi',
-        'misi'
+        'misi',
+        'tentang'
     ];
 
     /**
@@ -36,7 +38,8 @@ class Visi_misi extends Model
     protected $casts = [
         'id' => 'integer',
         'visi' => 'string',
-        'misi' => 'string'
+        'misi' => 'string',
+        'tentang' => 'string'
     ];
 
     /**

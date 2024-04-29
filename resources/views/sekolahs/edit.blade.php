@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
+{!!  !!} <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($sekolah, ['route' => ['sekolahs.update', $sekolah->id], 'method' => 'patch']) !!}
+            {!! Form::model($sekolah, ['route' => ['sekolahs.update', $sekolah->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -34,4 +34,7 @@
 
         </div>
     </div>
+
+    
 @endsection
+

@@ -16,6 +16,12 @@
     <p>{{ $prestasi->prestasi }}</p>
 </div>
 
+<!-- Gambar Field -->
+<div class="col-sm-12">
+    {!! Form::label('gambar', 'Gambar:') !!}
+    <p>{{ $prestasi->gambar }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="col-sm-12">
     {!! Form::label('created_at', 'Created At:') !!}

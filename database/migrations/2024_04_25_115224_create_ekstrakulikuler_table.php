@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVideosTable extends Migration
+class CreateEkstrakulikulerTable extends Migration
 {
 
     /**
@@ -14,10 +14,12 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('Ekstrakulikuler', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('link_url');
-            $table->string('judul_video');
+            $table->string('nama_ekstrakulikuler');
+            $table->string('keterangan_fasilitas');
+            $table->string('gambar');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('videos');
+        Schema::drop('Ekstrakulikuler');
     }
 }

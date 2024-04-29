@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class Visi_misiRepository
  * @package App\Repositories
- * @version March 29, 2024, 1:11 pm UTC
+ * @version April 25, 2024, 1:22 pm UTC
 */
 
 class Visi_misiRepository extends BaseRepository
@@ -18,7 +18,8 @@ class Visi_misiRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'visi',
-        'misi'
+        'misi',
+        'tentang'
     ];
 
     /**

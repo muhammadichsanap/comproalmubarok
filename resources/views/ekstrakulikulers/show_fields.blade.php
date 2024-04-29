@@ -10,10 +10,16 @@
     <p>{{ $ekstrakulikuler->nama_ekstrakulikuler }}</p>
 </div>
 
-<!-- Keterangan Ekstrakulikuler Field -->
+<!-- Keterangan Fasilitas Field -->
 <div class="col-sm-12">
-    {!! Form::label('keterangan_ekstrakulikuler', 'Keterangan Ekstrakulikuler:') !!}
-    <p>{{ $ekstrakulikuler->keterangan_ekstrakulikuler }}</p>
+    {!! Form::label('keterangan_fasilitas', 'Keterangan Fasilitas:') !!}
+    <p>{{ $ekstrakulikuler->keterangan_fasilitas }}</p>
+</div>
+
+<!-- Gambar Field -->
+<div class="col-sm-12">
+    {!! Form::label('gambar', 'Gambar:') !!}
+    <p>{{ $ekstrakulikuler->gambar }}</p>
 </div>
 
 <!-- Created At Field -->

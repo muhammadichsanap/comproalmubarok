@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVisiMisisTable extends Migration
+class CreateVideoTable extends Migration
 {
 
     /**
@@ -14,10 +14,10 @@ class CreateVisiMisisTable extends Migration
      */
     public function up()
     {
-        Schema::create('visi_misis', function (Blueprint $table) {
+        Schema::create('Video', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('visi');
-            $table->string('misi');
+            $table->string('link_url');
+            $table->string('judul_video');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateVisiMisisTable extends Migration
      */
     public function down()
     {
-        Schema::drop('visi_misis');
+        Schema::drop('Video');
     }
 }

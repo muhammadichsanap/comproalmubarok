@@ -10,6 +10,7 @@
         <th>Jam Belajar</th>
         <th>No Wa</th>
         <th>Email</th>
+        <th>Gambar</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -24,6 +25,14 @@
             <td>{{ $sekolah->jam_belajar }}</td>
             <td>{{ $sekolah->no_wa }}</td>
             <td>{{ $sekolah->email }}</td>
+            <td>{{ $sekolah->gambar }}</td>
+            <td>
+                @if($sekolah->gambar)
+                    <img src="{{ asset('images/'.$sekolah->gambar) }}" alt="Gambar Sekolah" style="max-width: 100px;">
+                @else
+                    <p>No image available</p>
+                @endif
+            </td>
                 <td width="120">
                     {!! Form::open(['route' => ['sekolahs.destroy', $sekolah->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

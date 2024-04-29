@@ -3,7 +3,8 @@
         <thead>
         <tr>
             <th>Nama Ekstrakulikuler</th>
-        <th>Keterangan Ekstrakulikuler</th>
+        <th>Keterangan Fasilitas</th>
+        <th>Gambar</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -11,7 +12,8 @@
         @foreach($ekstrakulikulers as $ekstrakulikuler)
             <tr>
                 <td>{{ $ekstrakulikuler->nama_ekstrakulikuler }}</td>
-            <td>{{ $ekstrakulikuler->keterangan_ekstrakulikuler }}</td>
+            <td>{{ $ekstrakulikuler->keterangan_fasilitas }}</td>
+            <td>{{ $ekstrakulikuler->gambar }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['ekstrakulikulers.destroy', $ekstrakulikuler->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

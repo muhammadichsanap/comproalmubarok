@@ -8,17 +8,20 @@
                     <h1>Siswas</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('siswas.create') }}">
-                        Add New
-                    </a>
+                    <div class="float-right">
+                        <a class="btn btn-primary" href="{{ route('siswas.create') }}">
+                            Add New
+                        </a>
+                        <a class="btn btn-success ml-2" href="{{ route('siswas.import') }}">
+                            Import CSV
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="content px-3">
-
         @include('flash::message')
 
         <div class="clearfix"></div>
@@ -33,9 +36,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
 @endsection
-

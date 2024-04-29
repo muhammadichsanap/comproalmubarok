@@ -2,30 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Prestasi
  * @package App\Models
- * @version March 29, 2024, 1:04 pm UTC
+ * @version April 25, 2024, 11:48 am UTC
  *
  * @property string $nama_siswa
  * @property string $prestasi
+ * @property string $gambar
  */
 class Prestasi extends Model
 {
 
 
-    public $table = 'prestasis';
+    public $table = 'Prestasi';
     
 
 
 
     public $fillable = [
         'nama_siswa',
-        'prestasi'
+        'prestasi',
+        'gambar'
     ];
 
     /**
@@ -36,7 +38,8 @@ class Prestasi extends Model
     protected $casts = [
         'id' => 'integer',
         'nama_siswa' => 'string',
-        'prestasi' => 'string'
+        'prestasi' => 'string',
+        'gambar' => 'string'
     ];
 
     /**

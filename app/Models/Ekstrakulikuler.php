@@ -2,30 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Ekstrakulikuler
  * @package App\Models
- * @version March 29, 2024, 12:23 pm UTC
+ * @version April 25, 2024, 11:52 am UTC
  *
  * @property string $nama_ekstrakulikuler
- * @property string $keterangan_ekstrakulikuler
+ * @property string $keterangan_fasilitas
+ * @property string $gambar
  */
 class Ekstrakulikuler extends Model
 {
 
 
-    public $table = 'ekstrakulikulers';
+    public $table = 'Ekstrakulikuler';
     
 
 
 
     public $fillable = [
         'nama_ekstrakulikuler',
-        'keterangan_ekstrakulikuler'
+        'keterangan_fasilitas',
+        'gambar'
     ];
 
     /**
@@ -36,7 +38,8 @@ class Ekstrakulikuler extends Model
     protected $casts = [
         'id' => 'integer',
         'nama_ekstrakulikuler' => 'string',
-        'keterangan_ekstrakulikuler' => 'string'
+        'keterangan_fasilitas' => 'string',
+        'gambar' => 'string'
     ];
 
     /**

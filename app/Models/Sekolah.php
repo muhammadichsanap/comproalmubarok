@@ -2,29 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Sekolah
  * @package App\Models
- * @version March 29, 2024, 11:19 am UTC
+ * @version April 25, 2024, 11:58 am UTC
  *
  * @property string $nama_sekolah
  * @property string $alamat_sekolah
  * @property string $akreditasi
  * @property string $kurikulum
- * @property string $jumlah_siswa
+ * @property integer $jumlah_siswa
  * @property string $jam_belajar
  * @property integer $no_wa
  * @property string $email
+ * @property string $gambar
  */
 class Sekolah extends Model
 {
 
 
-    public $table = 'sekolahs';
+    public $table = 'Sekolah';
     
 
 
@@ -37,7 +38,8 @@ class Sekolah extends Model
         'jumlah_siswa',
         'jam_belajar',
         'no_wa',
-        'email'
+        'email',
+        'gambar'
     ];
 
     /**
@@ -51,10 +53,11 @@ class Sekolah extends Model
         'alamat_sekolah' => 'string',
         'akreditasi' => 'string',
         'kurikulum' => 'string',
-        'jumlah_siswa' => 'string',
+        'jumlah_siswa' => 'integer',
         'jam_belajar' => 'string',
         'no_wa' => 'integer',
-        'email' => 'string'
+        'email' => 'string',
+        'gambar' => 'string'
     ];
 
     /**

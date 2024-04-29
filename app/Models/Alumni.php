@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Alumni
  * @package App\Models
- * @version March 29, 2024, 12:53 pm UTC
+ * @version April 25, 2024, 11:47 am UTC
  *
  * @property string $nama_alumni
  * @property integer $tahun_lulus
@@ -19,7 +19,7 @@ class Alumni extends Model
 {
 
 
-    public $table = 'alumnis';
+    public $table = 'Alumni';
     
 
 

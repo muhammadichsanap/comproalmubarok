@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class FasilitasRepository
  * @package App\Repositories
- * @version March 29, 2024, 12:29 pm UTC
+ * @version April 25, 2024, 11:51 am UTC
 */
 
 class FasilitasRepository extends BaseRepository

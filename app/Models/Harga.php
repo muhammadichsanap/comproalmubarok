@@ -2,32 +2,46 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Harga
  * @package App\Models
- * @version March 29, 2024, 12:46 pm UTC
+ * @version April 25, 2024, 11:46 am UTC
  *
- * @property integer $uang_gedung
- * @property integer $uang_masuk
+ * @property integer $pengembangan
+ * @property integer $pemeliharaan_gedung
+ * @property integer $peningkatan_mutu
+ * @property integer $kegiatan_belajar
+ * @property integer $buku_paket
+ * @property integer $seragam_putra
+ * @property integer $seragam_putri
  * @property integer $spp
+ * @property integer $total_putra
+ * @property integer $total_putri
  */
 class Harga extends Model
 {
 
 
-    public $table = 'hargas';
+    public $table = 'Harga';
     
 
 
 
     public $fillable = [
-        'uang_gedung',
-        'uang_masuk',
-        'spp'
+        'pengembangan',
+        'pemeliharaan_gedung',
+        'peningkatan_mutu',
+        'kegiatan_belajar',
+        'buku_paket',
+        'seragam_putra',
+        'seragam_putri',
+        'spp',
+        'total_putra',
+        'total_putri'
     ];
 
     /**
@@ -37,9 +51,16 @@ class Harga extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'uang_gedung' => 'integer',
-        'uang_masuk' => 'integer',
-        'spp' => 'integer'
+        'pengembangan' => 'integer',
+        'pemeliharaan_gedung' => 'integer',
+        'peningkatan_mutu' => 'integer',
+        'kegiatan_belajar' => 'integer',
+        'buku_paket' => 'integer',
+        'seragam_putra' => 'integer',
+        'seragam_putri' => 'integer',
+        'spp' => 'integer',
+        'total_putra' => 'integer',
+        'total_putri' => 'integer'
     ];
 
     /**

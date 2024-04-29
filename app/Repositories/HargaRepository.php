@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class HargaRepository
  * @package App\Repositories
- * @version March 29, 2024, 12:46 pm UTC
+ * @version April 25, 2024, 11:46 am UTC
 */
 
 class HargaRepository extends BaseRepository
@@ -17,9 +17,16 @@ class HargaRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'uang_gedung',
-        'uang_masuk',
-        'spp'
+        'pengembangan',
+        'pemeliharaan_gedung',
+        'peningkatan_mutu',
+        'kegiatan_belajar',
+        'buku_paket',
+        'seragam_putra',
+        'seragam_putri',
+        'spp',
+        'total_putra',
+        'total_putri'
     ];
 
     /**

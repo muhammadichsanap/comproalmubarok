@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHargasTable extends Migration
+class CreateTendikTable extends Migration
 {
 
     /**
@@ -14,11 +14,11 @@ class CreateHargasTable extends Migration
      */
     public function up()
     {
-        Schema::create('hargas', function (Blueprint $table) {
+        Schema::create('Tendik', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uang_gedung');
-            $table->integer('uang_masuk');
-            $table->integer('spp');
+            $table->string('nama_pendidik');
+            $table->string('jabatan_pendidik');
+            $table->string('gambar');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateHargasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('hargas');
+        Schema::drop('Tendik');
     }
 }

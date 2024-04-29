@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class TendikRepository
  * @package App\Repositories
- * @version March 29, 2024, 12:35 pm UTC
+ * @version April 25, 2024, 11:50 am UTC
 */
 
 class TendikRepository extends BaseRepository
@@ -18,7 +18,8 @@ class TendikRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'nama_pendidik',
-        'jabatan_pendidik'
+        'jabatan_pendidik',
+        'gambar'
     ];
 
     /**

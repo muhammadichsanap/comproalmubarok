@@ -121,6 +121,28 @@
             display: flex; 
             flex-wrap: wrap; 
         }
+
+        .full-screen-image {
+            width: 100vw; /* Lebar viewport */
+            height: 100vh; /* Tinggi viewport */
+            object-fit: cover; /* Memastikan gambar mengisi seluruh area tanpa distorsi */
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            color: white; 
+            width: 30%;/* Warna teks */
+        }
+
     </style>
     
     
@@ -174,7 +196,7 @@
 <main>
     <h1 class="visually-hidden">Headers examples</h1>
     <div class="container-fluid">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <header class="d-flex flex-wrap justify-content-center py-2 mb-3">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img src="/images/v267_2456.png" width="40" height="32" alt="Logo">
                 <span class="fs-4"></span>
@@ -190,6 +212,80 @@
                 <li class="nav-item"><a href="#" class="nav-link">Fasilitas</a></li>
             </ul>
         </header>
+    </div>
+    <div class="image-container">
+    <img src="/images/v267_2416.png" class="full-screen-image" alt="Logo">
+    <div class="centered-text">
+    <h1>SDIT AL-MUBAROKAH</h1>
+        <h1>Visi</h1>
+        <p>Deskripsi teks yang bersampingan dengan gambar.</p>
+        <h1>Misi</h1>
+        <p>Deskripsi teks yang bersampingan dengan gambar.</p>
+    </div>
+    </div>
+    </div>   
+    </div>
+    <div class="container">
+    <div class="mt-5">
+    <div style="text-align: center;">
+        <h1>Kegiatan</h1>
+        </div>
+        <div class="mt-5 d-flex justify-content-center">
+        <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Judul</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+      
+<div class="mt-3 d-flex justify-content-center">
+        <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Judul</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="mt-3 d-flex justify-content-center">
+        <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Judul</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+    </div>
+    <div class="mt-5 d-flex justify-content-center">
+    <p class="d-inline-flex gap-1">
+  <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">TAMPILKAN SEMUA KEGIATAN</button>
+</p>
     </div>
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

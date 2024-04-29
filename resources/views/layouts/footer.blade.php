@@ -96,7 +96,7 @@
         --bs-btn-active-bg: #5a23c8;
         --bs-btn-active-border-color: #5a23c8;
       }
-
+    
       .bd-mode-toggle {
         z-index: 1500;
       }
@@ -104,11 +104,16 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+
+      .border-top-short {
+        border-top: 1px solid #dee2e6 !important;
+        width: 400px; /* Sesuaikan lebar garis atas sesuai kebutuhan */
+    }
     </style>
 
     
   </head>
-  <body>
+  <body style="background-color: orange;">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -181,49 +186,51 @@
 
 
 <div class="container">
-      
-  <footer class="py-5">
-    <div class="col mb-3">
-      <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-        <img src="/images/v267_2456.png" width="182" height="178" alt="Logo">
-      </a>
-      @foreach ($programs->pluck('nama_program') as $program)
-      <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">{{ $program }}</h2>  
-      @endforeach
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Info Sekolah</h5>
-        <ul class="nav flex-column">
-            @foreach ($kegiatans as $kegiatan)
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-body-secondary">{{ $kegiatan->nama_kegiatan }}</a>
-                    <p>{{ $kegiatan->keterangan }}</p>
-                    <img src="{{ $kegiatan->gambar }}" alt="Gambar Kegiatan" style="max-width: 150px; float: center;">
-                </li>
-            @endforeach
-        </ul>
-      </div>
-
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Agenda Sekolah</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-      <p>&copy; 2024 Company, Inc. All rights reserved.</p>
-      <ul class="list-unstyled d-flex">
-        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-      </ul>
-    </div>
-  </footer>
+    <footer class="py-5">
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+                    <img src="/images/v267_2456.png" width="182" height="178" alt="Logo">
+                </a>
+                @foreach ($programs->pluck('nama_program') as $program)
+                <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">{{ $program }}</h2>  
+                @endforeach
+                <p class="lh-1">SD swasta ini pertama kali berdiri pada tahun 2013</p>
+                <p class="lh-1">Pada saat ini SD IT AL Mubarokah masih menggunakan</p>
+                <p class="lh-1">program kurikulum belajar SD 2013. SD IT AL Mubarokah</p>
+                <p class="lh-1">berada di bawah naungan kepala sekolah dengan nama</p>
+                <p class="lh-1">Muhamad Firdaus dan operator sekolah Doni Hanapi.</p>
+            </div>
+            <div class="col-lg-6 mb-3">
+                <h5>Info Sekolah</h5>
+                <div class="d-flex">
+                    <div>
+                        @foreach ($kegiatans as $kegiatan)
+                        <div class="mb-3">
+                            <img src="{{ $kegiatan->gambar }}" alt="Gambar Kegiatan" style="max-width: 150px;">
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="ms-3">
+                        @foreach ($kegiatans as $kegiatan)
+                        <div class="mb-3">
+                            <h6>{{ $kegiatan->nama_kegiatan }}</h6>
+                            <p>{{ $kegiatan->keterangan }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top border-top-short">
+        <ul class="list-unstyled d-flex">
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter "/></svg></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+            </ul>    
+        </div>
+        <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+    </footer>
 </div>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

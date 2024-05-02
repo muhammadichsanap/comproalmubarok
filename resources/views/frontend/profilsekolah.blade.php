@@ -143,6 +143,10 @@
             width: 30%;/* Warna teks */
         }
 
+        .orange-text {
+            color: orange;
+        }
+
     </style>
     
     
@@ -203,7 +207,7 @@
             </a>
             
             <ul class="nav nav-pills justify-content-center">
-                <li class="nav-item"><a href="profilsekolah" class="nav-link">Profile Sekolah</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Profile Sekolah</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Kegiatan</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Keuangan</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Ekstrakulikuler</a></li>
@@ -213,80 +217,37 @@
             </ul>
         </header>
     </div>
-    <div class="image-container">
-    <img src="/images/v267_2416.png" class="full-screen-image" alt="Logo">
-    <div class="centered-text">
-    <h1>SDIT AL-MUBAROKAH</h1>
-        <h1>Visi</h1>
-        <p>Deskripsi teks yang bersampingan dengan gambar.</p>
-        <h1>Misi</h1>
-        <p>Deskripsi teks yang bersampingan dengan gambar.</p>
-    </div>
-    </div>
-    </div>   
-    </div>
+
+    
     <div class="container">
     <div class="mt-5">
     <div style="text-align: center;">
-        <h1>Kegiatan</h1>
+        <h1>SDIT AL-MUBAROKAH</h1>
         </div>
+        
         <div class="mt-5 d-flex justify-content-center">
-        <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Judul</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-      
-<div class="mt-3 d-flex justify-content-center">
-        <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Judul</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
+        <div class="card w-50 mb-3">
+  <div class="card-body">
+    <h5 class="card-title orange-text">Program</h5>
+    @foreach ($programs as $program)
+        <p class="card-text">{{ $program->nama_program }}</p>
+    @endforeach
   </div>
 </div>
 </div>
 
-<div class="mt-3 d-flex justify-content-center">
-        <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Judul</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
+<div class="mt-5 d-flex justify-content-center">
+        <div class="card w-50 mb-3">
+  <div class="card-body">
+    <h5 class="card-title orange-text">Visi</h5>
+    <p class="card-text">{{ $visiMisi->visi }}</p>
+    <h5 class="card-title orange-text">Misi</h5>
+    <p class="card-text">{{ $visiMisi->misi }}</p>    
+</div>
   </div>
 </div>
-</div>
-    </div>
-    </div>
-    <div class="mt-5 d-flex justify-content-center">
-    <p class="d-inline-flex gap-1">
-  <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">TAMPILKAN SEMUA KEGIATAN</button>
-</p>
-    </div>
+
+@include('layouts.footer')
 
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

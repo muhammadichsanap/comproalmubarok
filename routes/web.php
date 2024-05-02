@@ -72,6 +72,8 @@ Route::get('/header', [App\Http\Controllers\FrontendController::class, 'header']
 
 Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer']);
 
+Route::get('/profilsekolah', [App\Http\Controllers\FrontendController::class, 'profilsekolah']);
+
 
 Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
 

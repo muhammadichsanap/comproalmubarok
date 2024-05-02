@@ -54,4 +54,8 @@ class FrontendController extends Controller
         return view('layouts.footer', ['programs' => $programs, 'kegiatans' => $kegiatans]);
     }
 
+    public function profilsekolah()
+    {
+        return view('layouts.profilsekolah');
+    }
 }

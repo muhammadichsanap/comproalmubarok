@@ -28,6 +28,7 @@
 
 
     <style>
+      
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -205,19 +206,13 @@
                 <h5>Info Sekolah</h5>
                 <div class="d-flex">
                     <div>
-                        @foreach ($kegiatans as $kegiatan)
-                        <div class="mb-3">
-                            <img src="{{ $kegiatan->gambar }}" alt="Gambar Kegiatan" style="max-width: 150px;">
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="ms-3">
-                        @foreach ($kegiatans as $kegiatan)
-                        <div class="mb-3">
-                            <h6>{{ $kegiatan->nama_kegiatan }}</h6>
-                            <p>{{ $kegiatan->keterangan }}</p>
-                        </div>
-                        @endforeach
+                      @foreach ($kegiatans as $kegiatan)
+                      <div class="mb-3">
+                          <img src="{{ asset('images/'.$kegiatan->gambar) }}" alt="Gambar Kegiatan" style="max-width: 100px;">
+                          <h6>{{ $kegiatan->nama_kegiatan }}</h6>
+                          <p>{{ $kegiatan->keterangan }}</p>
+                      </div>
+                      @endforeach
                     </div>
                 </div>
             </div>
@@ -236,3 +231,5 @@
 
     </body>
 </html>
+
+

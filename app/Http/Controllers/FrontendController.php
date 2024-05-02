@@ -56,6 +56,9 @@ class FrontendController extends Controller
 
     public function profilsekolah()
     {
-        return view('layouts.profilsekolah');
+        $programs = Program::all();
+        $visiMisi = Visi_misi::first();
+        $kegiatans = Kegiatan::all();
+        return view('frontend.profilsekolah', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
     }
 }

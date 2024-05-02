@@ -143,6 +143,10 @@
             width: 30%;/* Warna teks */
         }
 
+        .orange-text {
+            color: orange;
+        }
+
     </style>
     
     
@@ -224,27 +228,26 @@
         <div class="mt-5 d-flex justify-content-center">
         <div class="card w-50 mb-3">
   <div class="card-body">
-    <h5 class="card-title">Tentang</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur. Tristique sapien elit natoque sed nullam diam parturient dui. Iaculis etiam facilisis cras faucibus adipiscing aliquet sollicitudin. Neque ac pellentesque sem neque diam est. Rhoncus volutpat accumsan tincidunt ut ac. Elementum vitae nisi sagittis iaculis tellus enim tempor laoreet aliquet. 
-        Sollicitudin eu est volutpat aliquet vitae sed. Non convallis risus cras nisi. Felis viverra tincidunt enim vitae lectus. Sit lacinia gravida id tortor.</p>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur. Tristique sapien elit natoque sed nullam diam parturient dui. Iaculis etiam facilisis cras faucibus adipiscing aliquet sollicitudin. Neque ac pellentesque sem neque diam est. Rhoncus volutpat accumsan tincidunt ut ac. Elementum vitae nisi sagittis iaculis tellus enim tempor laoreet aliquet. 
-        Sollicitudin eu est volutpat aliquet vitae sed. Non convallis risus cras nisi. Felis viverra tincidunt enim vitae lectus. Sit lacinia gravida id tortor.</p>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur. Tristique sapien elit natoque sed nullam diam parturient dui. Iaculis etiam facilisis cras faucibus adipiscing aliquet sollicitudin. Neque ac pellentesque sem neque diam est. Rhoncus volutpat accumsan tincidunt ut ac. Elementum vitae nisi sagittis iaculis tellus enim tempor laoreet aliquet. 
-        Sollicitudin eu est volutpat aliquet vitae sed. Non convallis risus cras nisi. Felis viverra tincidunt enim vitae lectus. Sit lacinia gravida id tortor.</p>
-    </div>
+    <h5 class="card-title orange-text">Program</h5>
+    @foreach ($programs as $program)
+        <p class="card-text">{{ $program->nama_program }}</p>
+    @endforeach
   </div>
+</div>
 </div>
 
 <div class="mt-5 d-flex justify-content-center">
         <div class="card w-50 mb-3">
   <div class="card-body">
-    <h5 class="card-title">Visi</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium rem amet reiciendis fugit atque at, deleniti provident veniam obcaecati quia, maiores tempore, odio molestias dolore nulla odit ratione dolorem laboriosam?</p>
-    <h5 class="card-title">Misi</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium rem amet reiciendis fugit atque at, deleniti provident veniam obcaecati quia, maiores tempore, odio molestias dolore nulla odit ratione dolorem laboriosam?</p>    
+    <h5 class="card-title orange-text">Visi</h5>
+    <p class="card-text">{{ $visiMisi->visi }}</p>
+    <h5 class="card-title orange-text">Misi</h5>
+    <p class="card-text">{{ $visiMisi->misi }}</p>    
 </div>
   </div>
 </div>
+
+@include('layouts.footer')
 
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

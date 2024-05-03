@@ -74,6 +74,10 @@ Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer'
 
 Route::get('/profilsekolah', [App\Http\Controllers\FrontendController::class, 'profilsekolah']);
 
+Route::get('/keuangan', [App\Http\Controllers\FrontendController::class, 'keuangan']);
+
+Route::get('/ekstrakulikuler', [App\Http\Controllers\FrontendController::class, 'ekstrakulikuler']);
+
 
 Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
 
@@ -82,3 +86,6 @@ Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
 
 Route::resource('visiMisis', App\Http\Controllers\Visi_misiController::class);
 
+
+
+Route::resource('persyaratans', App\Http\Controllers\PersyaratanController::class);

@@ -147,6 +147,10 @@
             color: orange;
         }
 
+        .orange-divider {
+            border-top: 3px solid orange; 
+        }
+
     </style>
     
     
@@ -220,32 +224,28 @@
 
     
     <div class="container">
-    <div class="mt-5">
-    <div style="text-align: center;">
-        <h1>SDIT AL-MUBAROKAH</h1>
+        <div class="mt-5">
+            <div style="text-align: center;">
+                <h1>Ekstrakulikuler</h1>
+            </div>
+            
+            <div class="mt-5">
+                @foreach ($ekstrakulikuler as $item)
+                    <div class="d-flex justify-content-center">
+                        <div class="card w-50 mb-3">
+                            <div class="card-body">
+                                <p class="card-title orange-text">{{ $item->nama_ekstrakulikuler }}</p>
+                                <p class="card-text">{{ $item->keterangan_fasilitas }}</p>
+                                <img src="{{ asset('images/'.$item->gambar) }}" alt="Gambar Ekstrakulikuler" style="max-width: 100px;">
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
-        
-        <div class="mt-5 d-flex justify-content-center">
-        <div class="card w-50 mb-3">
-  <div class="card-body">
-    <h5 class="card-title orange-text">Program</h5>
-    @foreach ($programs as $program)
-        <p class="card-text">{{ $program->nama_program }}</p>
-    @endforeach
-  </div>
-</div>
-</div>
+    </div>
 
-<div class="mt-5 d-flex justify-content-center">
-        <div class="card w-50 mb-3">
-  <div class="card-body">
-    <h5 class="card-title orange-text">Visi</h5>
-    <p class="card-text">{{ $visiMisi->visi }}</p>
-    <h5 class="card-title orange-text">Misi</h5>
-    <p class="card-text">{{ $visiMisi->misi }}</p>    
-</div>
-  </div>
-</div>
+
 
 
 </main>

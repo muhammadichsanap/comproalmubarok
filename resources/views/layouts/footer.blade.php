@@ -108,7 +108,19 @@
 
       .border-top-short {
         border-top: 1px solid #dee2e6 !important;
-        width: 400px; /* Sesuaikan lebar garis atas sesuai kebutuhan */
+        width: 100%; /* Sesuaikan lebar garis atas sesuai kebutuhan */
+    }
+
+    .footer-small {
+        font-size: 0.8rem; /* Mengatur ukuran font lebih kecil */
+        padding: 10px; /* Mengurangi padding */
+    }
+    .footer-small img {
+        width: 80px; /* Mengurangi ukuran gambar */
+        height: auto; /* Menjaga rasio aspek gambar */
+    }
+    .footer-small h6, .footer-small p {
+        margin-bottom: 5px; /* Mengurangi margin antar elemen */
     }
     </style>
 
@@ -131,40 +143,6 @@
       </symbol>
     </svg>
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-              id="bd-theme"
-              type="button"
-              aria-expanded="false"
-              data-bs-toggle="dropdown"
-              aria-label="Toggle theme (auto)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-            Light
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-            Dark
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
-            Auto
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-      </ul>
-    </div>
 
     
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -184,52 +162,50 @@
 </svg>
 
 
-
-
 <div class="container">
-    <footer class="py-5">
-        <div class="row">
-            <div class="col-lg-6 mb-3">
-                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                    <img src="/images/v267_2456.png" width="182" height="178" alt="Logo">
-                </a>
-                @foreach ($programs->pluck('nama_program') as $program)
-                <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">{{ $program }}</h2>  
-                @endforeach
-                <p class="lh-1">SD swasta ini pertama kali berdiri pada tahun 2013</p>
-                <p class="lh-1">Pada saat ini SD IT AL Mubarokah masih menggunakan</p>
-                <p class="lh-1">program kurikulum belajar SD 2013. SD IT AL Mubarokah</p>
-                <p class="lh-1">berada di bawah naungan kepala sekolah dengan nama</p>
-                <p class="lh-1">Muhamad Firdaus dan operator sekolah Doni Hanapi.</p>
-            </div>
-            <div class="col-lg-6 mb-3">
-                <h5>Info Sekolah</h5>
-                <div class="d-flex">
+  <footer class="py-5">
+      <div class="row">
+          <div class="col-lg-6 mb-3">
+              <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+                  <img src="/images/v267_2456.png" width="182" height="178" alt="Logo">
+              </a>
+              @foreach ($programs->pluck('nama_program') as $program)
+              <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">{{ $program }}</h2>  
+              @endforeach
+              <p class="lh-1">SD swasta ini pertama kali berdiri pada tahun 2013</p>
+              <p class="lh-1">Pada saat ini SD IT AL Mubarokah masih menggunakan</p>
+              <p class="lh-1">program kurikulum belajar SD 2013. SD IT AL Mubarokah</p>
+              <p class="lh-1">berada di bawah naungan kepala sekolah dengan nama</p>
+              <p class="lh-1">Muhamad Firdaus dan operator sekolah Doni Hanapi.</p>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <h5>Kegiatan Sekolah</h5>
+            <div class="row">
+                @foreach ($kegiatans as $kegiatan)
+                <div class="col-md-6 mb-3">
                     <div>
-                      @foreach ($kegiatans as $kegiatan)
-                      <div class="mb-3">
-                          <img src="{{ asset('images/'.$kegiatan->gambar) }}" alt="Gambar Kegiatan" style="max-width: 100px;">
-                          <h6>{{ $kegiatan->nama_kegiatan }}</h6>
-                          <p>{{ $kegiatan->keterangan }}</p>
-                      </div>
-                      @endforeach
+                        <img src="{{ asset('images/'.$kegiatan->gambar) }}" alt="Gambar Kegiatan" style="max-width: 100px;">
+                        <h6>{{ $kegiatan->nama_kegiatan }}</h6>
+                        <p>{{ $kegiatan->created_at->toDateString() }}</p> <!-- Format tanggal sesuai kebutuhan -->
+                        <p>{{ $kegiatan->keterangan }}</p>
+                        
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
-        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top border-top-short">
-        <ul class="list-unstyled d-flex">
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter "/></svg></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-            </ul>    
-        </div>
-        <p>&copy; 2024 Company, Inc. All rights reserved.</p>
-    </footer>
+      </div>
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top border-top-short">
+      <ul class="list-unstyled d-flex">
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter "/></svg></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+          </ul>    
+      </div>
+      <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+  </footer>
 </div>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    </body>
 </html>
 
 

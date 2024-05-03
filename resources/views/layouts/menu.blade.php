@@ -96,3 +96,11 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('persyaratans.index') }}"
+       class="nav-link {{ Request::is('persyaratans*') ? 'active' : '' }}">
+        <p>Persyaratans</p>
+    </a>
+</li>
+
+

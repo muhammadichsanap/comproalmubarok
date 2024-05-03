@@ -8,6 +8,7 @@ use App\Models\Ekstrakulikuler;
 use App\Models\Fasilitas;
 use App\Models\Harga;
 use App\Models\Kegiatan;
+use App\Models\Persyaratan;
 use App\Models\Prestasi;
 use App\Models\Program;
 use App\Models\Sekolah;
@@ -50,7 +51,7 @@ class FrontendController extends Controller
     public function footer()
     {
         $programs = Program::all();
-        $kegiatans = Kegiatan::all();
+        $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
         return view('layouts.footer', ['programs' => $programs, 'kegiatans' => $kegiatans]);
     }
 
@@ -60,5 +61,18 @@ class FrontendController extends Controller
         $visiMisi = Visi_misi::first();
         $kegiatans = Kegiatan::all();
         return view('frontend.profilsekolah', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
+    }
+
+    public function keuangan()
+    {
+        $harga = Harga::all();
+        $persyaratan = Persyaratan::all();
+        return view('frontend.keuangan', ['harga' => $harga, 'persyaratan' => $persyaratan]);
+    }
+
+    public function ekstrakulikuler()
+    {
+        $ekstrakulikuler = Ekstrakulikuler::all();
+        return view('frontend.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler]);
     }
 }

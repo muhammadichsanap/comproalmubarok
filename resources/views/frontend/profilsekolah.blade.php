@@ -201,7 +201,7 @@
     <h1 class="visually-hidden">Headers examples</h1>
     <div class="container-fluid">
         <header class="d-flex flex-wrap justify-content-center py-2 mb-3">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <a href="/header" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img src="/images/v267_2456.png" width="40" height="32" alt="Logo">
                 <span class="fs-4"></span>
             </a>
@@ -236,16 +236,16 @@
 </div>
 </div>
 
-<div class="mt-5 d-flex justify-content-center">
+    <div class="mt-5 d-flex justify-content-center">
         <div class="card w-50 mb-3">
-  <div class="card-body">
-    <h5 class="card-title orange-text">Visi</h5>
-    <p class="card-text">{{ $visiMisi->visi }}</p>
-    <h5 class="card-title orange-text">Misi</h5>
-    <p class="card-text">{{ $visiMisi->misi }}</p>    
-</div>
-  </div>
-</div>
+            <div class="card-body">
+                <h5 class="card-title orange-text">Visi</h5>
+                <p class="card-text">{{ $visiMisi->visi }}</p>
+                <h5 class="card-title orange-text">Misi</h5>
+                <p class="card-text">{{ $visiMisi->misi }}</p>    
+            </div>
+        </div>
+    </div>
 
 
 </main>

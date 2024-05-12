@@ -59,7 +59,7 @@ class FrontendController extends Controller
     {
         $programs = Program::all();
         $visiMisi = Visi_misi::first();
-        $kegiatans = Kegiatan::all();
+        $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
         return view('frontend.profilsekolah', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
     }
 
@@ -72,7 +72,9 @@ class FrontendController extends Controller
 
     public function ekstrakulikuler()
     {
+        $programs = Program::all();
+        $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
         $ekstrakulikuler = Ekstrakulikuler::all();
-        return view('frontend.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler]);
+        return view('frontend.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler, 'programs' => $programs, 'kegiatans' => $kegiatans]);
     }
 }

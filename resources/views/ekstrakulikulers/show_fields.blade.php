@@ -12,7 +12,7 @@
 
 <!-- Keterangan Fasilitas Field -->
 <div class="col-sm-12">
-    {!! Form::label('keterangan_fasilitas', 'Keterangan Fasilitas:') !!}
+    {!! Form::label('keterangan_ekstrakulikuler', 'Keterangan Ekstrakulikuler:') !!}
     <p>{{ $ekstrakulikuler->keterangan_fasilitas }}</p>
 </div>
 

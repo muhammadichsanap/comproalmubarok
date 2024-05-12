@@ -143,14 +143,6 @@
             width: 30%;/* Warna teks */
         }
 
-        .orange-text {
-            color: orange;
-        }
-
-        .orange-divider {
-            border-top: 3px solid orange; 
-        }
-
     </style>
     
     
@@ -224,46 +216,34 @@
 
     
     <div class="container">
-        <div class="mt-5">
-            <div style="text-align: center;">
-                <h1>Rincian Biaya</h1>
-            </div>
-            
-            <div class="mt-5 d-flex justify-content-center">
-                <div class="card w-50 mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title orange-text">Persyaratan</h5>
-                        @foreach ($persyaratan as $persyaratan)
-                            <p class="card-text">{{ $persyaratan->syarat }}</p>
-                        @endforeach
-                    </div>
-                    
-                    <!-- Garis pembatas warna oranye -->
-                    <hr class="orange-divider">
-    
-                    <div class="card-body">
-                        <h5 class="card-title orange-text">Keuangan</h5>
-                        @foreach ($harga as $harga)
-                            <p>Pengembangan: Rp{{ number_format($harga->pengembangan, 0, ',', '.') }}</p>
-                            <p>Pemeliharaan Gedung: Rp{{ number_format($harga->pemeliharaan_gedung, 0, ',', '.') }}</p>
-                            <p>Peningkatan Mutu: Rp{{ number_format($harga->peningkatan_mutu, 0, ',', '.') }}</p>
-                            <p>Kegiatan Belajar: Rp{{ number_format($harga->kegiatan_belajar, 0, ',', '.') }}</p>
-                            <p>Buku Paket: Rp{{ number_format($harga->buku_paket, 0, ',', '.') }}</p>
-                            <p>Seragam Putra: Rp{{ number_format($harga->seragam_putra, 0, ',', '.') }}</p>
-                            <p>Seragam Putri: Rp{{ number_format($harga->seragam_putri, 0, ',', '.') }}</p>
-                            <p>SPP: Rp{{ number_format($harga->spp, 0, ',', '.') }}</p>
-                            <hr class="orange-divider">
-                            <p>Total Putra: Rp{{ number_format($harga->total_putra, 0, ',', '.') }}</p>
-                            <p>Total Putri: Rp{{ number_format($harga->total_putri, 0, ',', '.') }}</p>
-                        @endforeach
+    <div class="mt-5">
+    <div style="text-align: center;">
+        <h1>FASILITAS</h1>
+        </div>
+        
+        <div class="mt-3 d-flex flex-column align-items-center">
+            @foreach($fasilitas as $fasilitas)
+                <div class="card mb-3" style="max-width: 750px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-text">{{ $fasilitas->jumlah_fasilitas }}</h5>
+                                <h5 class="card-title">{{ $fasilitas->nama_fasilitas }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text">{{ $fasilitas->keterangan_fasilitas }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <br> <!-- Add a line break after each data entry -->
+            @endforeach
         </div>
+        
     </div>
-
-
-
+    </div>
 
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

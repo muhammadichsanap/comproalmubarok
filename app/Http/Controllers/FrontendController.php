@@ -32,6 +32,7 @@ class FrontendController extends Controller
             'kegiatans' => Kegiatan::all(),
             'prestasis' => Prestasi::all(),
             'programs' => Program::all(),
+            'kegiatans' => Kegiatan::all(),
             'sekolahs' => Sekolah::all(),
             'siswas' => Siswa::all(),
             'tendiks' => Tendik::all(),
@@ -59,7 +60,7 @@ class FrontendController extends Controller
     {
         $programs = Program::all();
         $visiMisi = Visi_misi::first();
-        $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
+        $kegiatans = Kegiatan::all();
         return view('frontend.profilsekolah', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
     }
 
@@ -72,9 +73,40 @@ class FrontendController extends Controller
 
     public function ekstrakulikuler()
     {
-        $programs = Program::all();
-        $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
         $ekstrakulikuler = Ekstrakulikuler::all();
-        return view('frontend.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler, 'programs' => $programs, 'kegiatans' => $kegiatans]);
+        return view('frontend.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler]);
+    }
+
+    public function kegiatan()
+    {
+        $kegiatans = Kegiatan::all();
+
+        return view('frontend.kegiatan', ['kegiatans' => $kegiatans]);
+    }
+
+    public function ekstrakurikuler()
+    {
+        return view('frontend.ekstrakurikuler');
+    }
+
+    public function prestasi()
+    {
+        $prestasis = Prestasi::all(); 
+
+        return view('frontend.prestasi', ['prestasis' => $prestasis]);
+    }
+
+    public function tendik()
+    {
+        $tendiks = Tendik::all();
+
+        return view('frontend.tendik', ['tendiks' => $tendiks]);
+    }
+
+    public function fasilitas()
+    {
+        $fasilitas = Fasilitas::all();
+
+        return view('frontend.fasilitas', ['fasilitas' => $fasilitas]);
     }
 }

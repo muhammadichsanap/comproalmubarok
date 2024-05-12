@@ -143,14 +143,6 @@
             width: 30%;/* Warna teks */
         }
 
-        .orange-text {
-            color: orange;
-        }
-
-        .orange-divider {
-            border-top: 3px solid orange; 
-        }
-
     </style>
     
     
@@ -224,46 +216,33 @@
 
     
     <div class="container">
-        <div class="mt-5">
-            <div style="text-align: center;">
-                <h1>Rincian Biaya</h1>
-            </div>
-            
-            <div class="mt-5 d-flex justify-content-center">
-                <div class="card w-50 mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title orange-text">Persyaratan</h5>
-                        @foreach ($persyaratan as $persyaratan)
-                            <p class="card-text">{{ $persyaratan->syarat }}</p>
-                        @endforeach
+    <div class="mt-5">
+    <div style="text-align: center;">
+        <h1>KEGIATAN</h1>
+        </div>
+        
+        <div class="mt-5 d-flex justify-content-center">
+            <div class="row justify-content-center">
+                @foreach($kegiatans as $kegiatan)
+                    <div class="col-md-12 mb-3">
+                        <div class="card" style="max-width: 750px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('images/'.$kegiatan->gambar) }}" class="img-fluid rounded-start" alt="{{ $kegiatan->nama_kegiatan }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $kegiatan->nama_kegiatan }}</h5>
+                                        <p class="card-text">{{ $kegiatan->keterangan }}</p>
+                                        <p class="card-text"><small class="text-body-secondary">Last updated {{ $kegiatan->updated_at->diffForHumans() }}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <!-- Garis pembatas warna oranye -->
-                    <hr class="orange-divider">
-    
-                    <div class="card-body">
-                        <h5 class="card-title orange-text">Keuangan</h5>
-                        @foreach ($harga as $harga)
-                            <p>Pengembangan: Rp{{ number_format($harga->pengembangan, 0, ',', '.') }}</p>
-                            <p>Pemeliharaan Gedung: Rp{{ number_format($harga->pemeliharaan_gedung, 0, ',', '.') }}</p>
-                            <p>Peningkatan Mutu: Rp{{ number_format($harga->peningkatan_mutu, 0, ',', '.') }}</p>
-                            <p>Kegiatan Belajar: Rp{{ number_format($harga->kegiatan_belajar, 0, ',', '.') }}</p>
-                            <p>Buku Paket: Rp{{ number_format($harga->buku_paket, 0, ',', '.') }}</p>
-                            <p>Seragam Putra: Rp{{ number_format($harga->seragam_putra, 0, ',', '.') }}</p>
-                            <p>Seragam Putri: Rp{{ number_format($harga->seragam_putri, 0, ',', '.') }}</p>
-                            <p>SPP: Rp{{ number_format($harga->spp, 0, ',', '.') }}</p>
-                            <hr class="orange-divider">
-                            <p>Total Putra: Rp{{ number_format($harga->total_putra, 0, ',', '.') }}</p>
-                            <p>Total Putri: Rp{{ number_format($harga->total_putri, 0, ',', '.') }}</p>
-                        @endforeach
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
-
-
-
 
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

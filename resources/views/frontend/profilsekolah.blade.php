@@ -213,7 +213,7 @@
                 <li class="nav-item"><a href="/ekstrakulikuler" class="nav-link">Ekstrakulikuler</a></li>
                 <li class="nav-item"><a href="/prestasi" class="nav-link">Prestasi</a></li>
                 <li class="nav-item"><a href="/tendik" class="nav-link">Tendik</a></li>
-                <li class="nav-item"><a href="/fasilitas" class="nav-link">Fasilitas</a></li>
+                <li class="nav-item"><a href="/fasilitassekolah" class="nav-link">Fasilitas</a></li>
             </ul>
         </header>
     </div>
@@ -247,7 +247,6 @@
   </div>
 </div>
 
-@include('layouts.footer')
 
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

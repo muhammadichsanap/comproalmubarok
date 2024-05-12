@@ -74,10 +74,20 @@ Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer'
 
 Route::get('/profilsekolah', [App\Http\Controllers\FrontendController::class, 'profilsekolah']);
 
+
+Route::get('/kegiatan', [App\Http\Controllers\FrontendController::class, 'kegiatan']);
+
+Route::get('/ekstrakurikuler', [App\Http\Controllers\FrontendController::class, 'ekstrakurikuler']);
+
+Route::get('/prestasi', [App\Http\Controllers\FrontendController::class, 'prestasi']);
+
 Route::get('/keuangan', [App\Http\Controllers\FrontendController::class, 'keuangan']);
 
 Route::get('/ekstrakulikuler', [App\Http\Controllers\FrontendController::class, 'ekstrakulikuler']);
 
+Route::get('/tendik', [App\Http\Controllers\FrontendController::class, 'tendik']);
+
+Route::get('/fasilitassekolah', [App\Http\Controllers\FrontendController::class, 'fasilitas']);
 
 Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
 

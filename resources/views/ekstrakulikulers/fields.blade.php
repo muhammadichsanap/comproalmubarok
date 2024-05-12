@@ -6,7 +6,7 @@
 
 <!-- Keterangan Fasilitas Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('keterangan_fasilitas', 'Keterangan Fasilitas:') !!}
+    {!! Form::label('keterangan_fasilitas', 'Keterangan Ekstrakulikuler:') !!}
     {!! Form::text('keterangan_fasilitas', null, ['class' => 'form-control']) !!}
 </div>
 

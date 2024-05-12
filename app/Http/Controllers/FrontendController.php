@@ -32,6 +32,7 @@ class FrontendController extends Controller
             'kegiatans' => Kegiatan::all(),
             'prestasis' => Prestasi::all(),
             'programs' => Program::all(),
+            'kegiatans' => Kegiatan::all(),
             'sekolahs' => Sekolah::all(),
             'siswas' => Siswa::all(),
             'tendiks' => Tendik::all(),
@@ -74,5 +75,38 @@ class FrontendController extends Controller
     {
         $ekstrakulikuler = Ekstrakulikuler::all();
         return view('frontend.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler]);
+    }
+
+    public function kegiatan()
+    {
+        $kegiatans = Kegiatan::all();
+
+        return view('frontend.kegiatan', ['kegiatans' => $kegiatans]);
+    }
+
+    public function ekstrakurikuler()
+    {
+        return view('frontend.ekstrakurikuler');
+    }
+
+    public function prestasi()
+    {
+        $prestasis = Prestasi::all(); 
+
+        return view('frontend.prestasi', ['prestasis' => $prestasis]);
+    }
+
+    public function tendik()
+    {
+        $tendiks = Tendik::all();
+
+        return view('frontend.tendik', ['tendiks' => $tendiks]);
+    }
+
+    public function fasilitas()
+    {
+        $fasilitas = Fasilitas::all();
+
+        return view('frontend.fasilitas', ['fasilitas' => $fasilitas]);
     }
 }

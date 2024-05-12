@@ -143,14 +143,6 @@
             width: 30%;/* Warna teks */
         }
 
-        .orange-text {
-            color: orange;
-        }
-
-        .orange-divider {
-            border-top: 3px solid orange; 
-        }
-
     </style>
     
     
@@ -224,44 +216,30 @@
 
     
     <div class="container">
-        <div class="mt-5">
-            <div style="text-align: center;">
-                <h1>Rincian Biaya</h1>
-            </div>
-            
+    <div class="mt-5">
+    <div style="text-align: center;">
+        <h1>TENDIK</h1>
+        </div>
+        
+        
+        <div class="container">
             <div class="mt-5 d-flex justify-content-center">
-                <div class="card w-50 mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title orange-text">Persyaratan</h5>
-                        @foreach ($persyaratan as $persyaratan)
-                            <p class="card-text">{{ $persyaratan->syarat }}</p>
-                        @endforeach
+                @foreach($tendiks as $key => $tendik)
+                    <div class="card m-1" style="width: 12rem;">
+                        <img src="{{ asset('images/'.$tendik->gambar) }}" class="img-fluid rounded-start" alt="{{ $tendik->nama_pendidik}}">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ $tendik->nama_pendidik }}</h5>
+                            <p class="card-text text-center">{{ $tendik->jabatan_pendidik }}</p>
+                        </div>
                     </div>
-                    
-                    <!-- Garis pembatas warna oranye -->
-                    <hr class="orange-divider">
-    
-                    <div class="card-body">
-                        <h5 class="card-title orange-text">Keuangan</h5>
-                        @foreach ($harga as $harga)
-                            <p>Pengembangan: Rp{{ number_format($harga->pengembangan, 0, ',', '.') }}</p>
-                            <p>Pemeliharaan Gedung: Rp{{ number_format($harga->pemeliharaan_gedung, 0, ',', '.') }}</p>
-                            <p>Peningkatan Mutu: Rp{{ number_format($harga->peningkatan_mutu, 0, ',', '.') }}</p>
-                            <p>Kegiatan Belajar: Rp{{ number_format($harga->kegiatan_belajar, 0, ',', '.') }}</p>
-                            <p>Buku Paket: Rp{{ number_format($harga->buku_paket, 0, ',', '.') }}</p>
-                            <p>Seragam Putra: Rp{{ number_format($harga->seragam_putra, 0, ',', '.') }}</p>
-                            <p>Seragam Putri: Rp{{ number_format($harga->seragam_putri, 0, ',', '.') }}</p>
-                            <p>SPP: Rp{{ number_format($harga->spp, 0, ',', '.') }}</p>
-                            <hr class="orange-divider">
-                            <p>Total Putra: Rp{{ number_format($harga->total_putra, 0, ',', '.') }}</p>
-                            <p>Total Putri: Rp{{ number_format($harga->total_putri, 0, ',', '.') }}</p>
-                        @endforeach
-                    </div>
-                </div>
+                    @if(($key + 1) % 3 == 0)
+                        </div>
+                        <div class="mt-5 d-flex justify-content-center">
+                    @endif
+                @endforeach
             </div>
         </div>
-    </div>
-
+                   
 
 
 

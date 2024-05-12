@@ -282,14 +282,13 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav nav-pills justify-content-center">
-                            <li class="nav-item"><a href="#" class="nav-link">BERANDA</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">PROFIL</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">KEGIATAN</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">KEUANGAN</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">EKSTRAKURIKULER</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">PRESTASI</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">TENDIK</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">FASILITAS</a></li>
+                            <li class="nav-item"><a href="/profilsekolah" class="nav-link">Profile Sekolah</a></li>
+                            <li class="nav-item"><a href="/kegiatan" class="nav-link">Kegiatan</a></li>
+                            <li class="nav-item"><a href="/keuangan" class="nav-link">Keuangan</a></li>
+                            <li class="nav-item"><a href="/ekstrakulikuler" class="nav-link">Ekstrakulikuler</a></li>
+                            <li class="nav-item"><a href="/prestasi" class="nav-link">Prestasi</a></li>
+                            <li class="nav-item"><a href="/tendik" class="nav-link">Tendik</a></li>
+                            <li class="nav-item"><a href="/fasilitassekolah" class="nav-link">Fasilitas</a></li>
                         </ul>
                     </div>
                 </nav>

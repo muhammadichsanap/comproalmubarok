@@ -46,15 +46,23 @@ class FrontendController extends Controller
 
     public function header()
     {
-        return view('layouts.header');
+            $visiMisi = Visi_misi::first();
+            $kegiatans = Kegiatan::all();
+            $ekstrakulikuler = Ekstrakulikuler::all();
+            $tendiks = Tendik::all();
+            $programs = Program::all();
+            $fasilitas = Fasilitas::all();
+            $siswas = Siswa::select('kelurahan', 'kecamatan')->selectRaw('count(*) as total')->groupBy('kelurahan', 'kecamatan')->get();
+
+            return view('layouts.header', ['visiMisi' => $visiMisi, 'kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas]);
     }
 
-    public function footer()
+    /*public function footer()
     {
         $programs = Program::all();
         $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
         return view('layouts.footer', ['programs' => $programs, 'kegiatans' => $kegiatans]);
-    }
+    }*/
 
     public function profilsekolah()
     {
@@ -105,8 +113,9 @@ class FrontendController extends Controller
 
     public function fasilitas()
     {
+        $programs = Program::all();
         $fasilitas = Fasilitas::all();
 
-        return view('frontend.fasilitas', ['fasilitas' => $fasilitas]);
+        return view('frontend.fasilitas', ['fasilitas' => $fasilitas, 'programs' => $programs]);
     }
 }

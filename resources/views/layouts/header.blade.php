@@ -301,12 +301,18 @@
             <img src="/images/v267_2416.png" class="full-screen-image" alt="Logo">
             <div class="centered-text">
                 <h1>SDIT AL-MUBAROKAH</h1>
-                <h1>Visi</h1>
-                <p>Deskripsi teks yang bersampingan dengan gambar.</p>
-                <h1>Misi</h1>
-                <p>Deskripsi teks yang bersampingan dengan gambar.</p>
+                <div class="mt-5 d-flex justify-content-center">
+                    <div class="card w-50 mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title orange-text">Visi</h5>
+                            <p class="card-text">{{ $visiMisi->visi }}</p>
+                            <h5 class="card-title orange-text">Misi</h5>
+                            <p class="card-text">{{ $visiMisi->misi }}</p>    
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </div><div class="image-container">
         </div>
         </div>
         <div class="container">
@@ -315,59 +321,28 @@
                     <h1>Kegiatan</h1>
                 </div>
                 <div class="mt-5 d-flex justify-content-center">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Judul</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small></p>
+                    <div class="row justify-content-center">
+                        @php
+                            $sortedKegiatans = $kegiatans->sortBy('updated_at')->take(3);
+                        @endphp
+                        @foreach($sortedKegiatans as $kegiatan)
+                            <div class="col-md-12 mb-3">
+                                <div class="card" style="max-width: 750px;">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="{{ asset('images/'.$kegiatan->gambar) }}" class="img-fluid rounded-start" alt="{{ $kegiatan->nama_kegiatan }}">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $kegiatan->nama_kegiatan }}</h5>
+                                                <p class="card-text">{{ $kegiatan->keterangan }}</p>
+                                                <p class="card-text"><small class="text-body-secondary">Last updated {{ $kegiatan->updated_at->diffForHumans() }}</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-3 d-flex justify-content-center">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Judul</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-3 d-flex justify-content-center">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Judul</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small></p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -375,8 +350,7 @@
 
         <div class="mt-5 d-flex justify-content-center">
             <p class="d-inline-flex gap-1">
-                <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">TAMPILKAN
-                    SEMUA KEGIATAN</button>
+                <a href="/kegiatan" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA KEGIATAN</a>
             </p>
         </div>
 
@@ -385,63 +359,29 @@
                 <div style="text-align: center;">
                     <h1>Ekstrakulikuler</h1>
                 </div>
-                <div class="mt-5 d-flex justify-content-center">
-                    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
+                <div class="mt-5">
+                    @php
+                        $sortedEkstrakulikuler = $ekstrakulikuler->sortBy('created_at')->take(3);
+                    @endphp
+                    @foreach ($sortedEkstrakulikuler as $item)
+                        <div class="d-flex justify-content-center">
+                            <div class="card w-50 mb-3">
+                                <div class="card-body">
+                                    <p class="card-title orange-text">{{ $item->nama_ekstrakulikuler }}</p>
+                                    <p class="card-text">{{ $item->keterangan_fasilitas }}</p>
+                                    <img src="{{ asset('images/'.$item->gambar) }}" alt="Gambar Ekstrakulikuler" style="max-width: 100px;">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
 
         <div class="mt-5 d-flex justify-content-center">
             <p class="d-inline-flex gap-1">
-                <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">
-                    SELENGKAPNYA</button>
+                <a href="/ekstrakulikuler" class="btn active" role="button" aria-pressed="true">SELENGKAPNYA</a>
             </p>
-        </div>
-
-        <div class="container">
-            <div class="mt-5">
-                <div class="mt-5 d-flex justify-content-center">
-                    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="container">
@@ -449,114 +389,89 @@
                 <div style="text-align: center;">
                     <h1>Tenaga Pendidik</h1>
                 </div>
-                <div class="mt-5 d-flex justify-content-center">
-                    <div class="card" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Nama Kepsek</h5>
-                            <p class="card-text text-center">KEPALA SEKOLAH</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Nama Kepsek</h5>
-                            <p class="card-text text-center">KEPALA SEKOLAH</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Nama Kepsek</h5>
-                            <p class="card-text text-center">KEPALA SEKOLAH</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Nama Kepsek</h5>
-                            <p class="card-text text-center">KEPALA SEKOLAH</p>
-                        </div>
+                <div class="container">
+                    <div class="mt-5 d-flex justify-content-center">
+                        @foreach($tendiks as $key => $tendik)
+                            <div class="card m-1" style="width: 12rem;">
+                                <img src="{{ asset('images/'.$tendik->gambar) }}" class="img-fluid rounded-start" alt="{{ $tendik->nama_pendidik}}">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ $tendik->nama_pendidik }}</h5>
+                                    <p class="card-text text-center">{{ $tendik->jabatan_pendidik }}</p>
+                                </div>
+                            </div>
+                            @if(($key + 1) % 3 == 0)
+                                </div>
+                                <div class="mt-5 d-flex justify-content-center">
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
-            <div class="mt-5">
-                <div style="text-align: center;">
-                    <h1>Fasilitas</h1>
-                </div>
-                <div class="mt-5 d-flex justify-content-center">
-                    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                        <div class="col">
-                            <div class="p-3 border bg-light">Row column</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="mt-5 d-flex justify-content-center">
+            <p class="d-inline-flex gap-1">
+                <a href="/tendik" class="btn active" role="button" aria-pressed="true">Lebih Lengkap</a>
+            </p>
         </div>
 
         <div class="container">
             <div class="mt-5">
-                <div style="text-align: center;">
-                    <h1>Penyebaran Murid</h1>
+            <div style="text-align: center;">
+                <h1>FASILITAS</h1>
                 </div>
-                <div class="mt-5 d-flex justify-content-center">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>sds</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                
+                <div class="mt-3 d-flex flex-column align-items-center">
+                    @foreach($fasilitas as $fasilitas)
+                        <div class="card mb-3" style="max-width: 750px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div class="card-body">
+                                        <h5 class="card-text">{{ $fasilitas->jumlah_fasilitas }}</h5>
+                                        <h5 class="card-title">{{ $fasilitas->nama_fasilitas }}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text">{{ $fasilitas->keterangan_fasilitas }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br> <!-- Add a line break after each data entry -->
+                    @endforeach
+                </div>
+                
+            </div>
+            </div>
+
+            <div class="container">
+                <div class="mt-5">
+                    <div style="text-align: center;">
+                        <h1>Penyebaran Murid</h1>
+                    </div>
+                    <div class="mt-5 d-flex justify-content-center">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kelurahan</th>
+                                    <th scope="col">Kecamatan</th>
+                                    <th scope="col">Jumlah Siswa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($siswas as $siswa)
+                                    <tr>
+                                        <td>{{ $siswa->kelurahan }}</td>
+                                        <td>{{ $siswa->kecamatan }}</td>
+                                        <td>{{ $siswa->total }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
 

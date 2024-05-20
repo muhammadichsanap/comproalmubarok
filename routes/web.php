@@ -75,6 +75,34 @@ Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer'
 Route::get('/profilsekolah', [App\Http\Controllers\FrontendController::class, 'profilsekolah']);
 
 
+//coba
+
+
+
+Route::get('/navbar', [App\Http\Controllers\FrontendController::class, 'navbar']);
+
+Route::get('/beranda', [App\Http\Controllers\FrontendController::class, 'beranda']);
+
+Route::get('/profil', [App\Http\Controllers\FrontendController::class, 'profil']);
+
+Route::get('/kegiatan', [App\Http\Controllers\FrontendController::class, 'kegiatan']);
+
+Route::get('/keuangan', [App\Http\Controllers\FrontendController::class, 'keuangan']);
+
+Route::get('/ekstrakulikuler', [App\Http\Controllers\FrontendController::class, 'ekstrakulikuler']);
+
+Route::get('/prestasi', [App\Http\Controllers\FrontendController::class, 'prestasi']);
+
+Route::get('/fasilitasSekolah', [App\Http\Controllers\FrontendController::class, 'fasilitasSekolah']);
+
+Route::get('/tendik', [App\Http\Controllers\FrontendController::class, 'tendik']);
+
+
+
+
+//coba
+
+
 Route::get('/kegiatan', [App\Http\Controllers\FrontendController::class, 'kegiatan']);
 
 Route::get('/ekstrakurikuler', [App\Http\Controllers\FrontendController::class, 'ekstrakurikuler']);
@@ -87,7 +115,7 @@ Route::get('/ekstrakulikuler', [App\Http\Controllers\FrontendController::class, 
 
 Route::get('/tendik', [App\Http\Controllers\FrontendController::class, 'tendik']);
 
-Route::get('/fasilitassekolah', [App\Http\Controllers\FrontendController::class, 'fasilitas']);
+// Route::get('/fasilitas', [App\Http\Controllers\FrontendController::class, 'fasilitas']);
 
 Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
 

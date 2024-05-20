@@ -44,7 +44,14 @@ class FrontendController extends Controller
         return view('frontend.home', $data);
     }
 
-    public function header()
+    //coba
+
+    public function navbar()
+    {
+        return view('Component.navbar');
+    }
+
+    public function beranda()
     {
             $visiMisi = Visi_misi::first();
             $kegiatans = Kegiatan::all();
@@ -54,68 +61,139 @@ class FrontendController extends Controller
             $fasilitas = Fasilitas::all();
             $siswas = Siswa::select('kelurahan', 'kecamatan')->selectRaw('count(*) as total')->groupBy('kelurahan', 'kecamatan')->get();
 
-            return view('layouts.header', ['visiMisi' => $visiMisi, 'kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas]);
+            return view('Content.beranda', ['visiMisi' => $visiMisi, 'kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas]);
     }
 
-    /*public function footer()
-    {
-        $programs = Program::all();
-        $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
-        return view('layouts.footer', ['programs' => $programs, 'kegiatans' => $kegiatans]);
-    }*/
-
-    public function profilsekolah()
+    public function profil()
     {
         $programs = Program::all();
         $visiMisi = Visi_misi::first();
         $kegiatans = Kegiatan::all();
-        return view('frontend.profilsekolah', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
-    }
-
-    public function keuangan()
-    {
-        $harga = Harga::all();
-        $persyaratan = Persyaratan::all();
-        return view('frontend.keuangan', ['harga' => $harga, 'persyaratan' => $persyaratan]);
-    }
-
-    public function ekstrakulikuler()
-    {
-        $ekstrakulikuler = Ekstrakulikuler::all();
-        return view('frontend.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler]);
+        return view('Content.profil', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
     }
 
     public function kegiatan()
     {
         $kegiatans = Kegiatan::all();
 
-        return view('frontend.kegiatan', ['kegiatans' => $kegiatans]);
+        return view('Content.kegiatan', ['kegiatans' => $kegiatans]);
     }
 
-    public function ekstrakurikuler()
+    public function keuangan()
     {
-        return view('frontend.ekstrakurikuler');
+        $harga = Harga::all();
+        $persyaratan = Persyaratan::all();
+        return view('Content.keuangan', ['harga' => $harga, 'persyaratan' => $persyaratan]);
+    }
+
+    
+    public function ekstrakulikuler()
+    {
+        $ekstrakulikuler = Ekstrakulikuler::all();
+        return view('Content.ekstrakulikuler', ['ekstrakulikuler' => $ekstrakulikuler]);
     }
 
     public function prestasi()
     {
         $prestasis = Prestasi::all(); 
 
-        return view('frontend.prestasi', ['prestasis' => $prestasis]);
+        return view('Content.prestasi', ['prestasis' => $prestasis]);
     }
 
     public function tendik()
     {
         $tendiks = Tendik::all();
 
-        return view('frontend.tendik', ['tendiks' => $tendiks]);
+        return view('Content.tendik', ['tendiks' => $tendiks]);
     }
 
-    public function fasilitas()
+    public function fasilitasSekolah()
     {
         $programs = Program::all();
         $fasilitas = Fasilitas::all();
 
-        return view('frontend.fasilitas', ['fasilitas' => $fasilitas, 'programs' => $programs]);
+        return view('Content.fasilitasSekolah', ['fasilitas' => $fasilitas, 'programs' => $programs]);
     }
+
+
+    //coba
+
+
+
+    // public function header()
+    // {
+    //         $visiMisi = Visi_misi::first();
+    //         $kegiatans = Kegiatan::all();
+    //         $ekstrakulikuler = Ekstrakulikuler::all();
+    //         $tendiks = Tendik::all();
+    //         $programs = Program::all();
+    //         $fasilitas = Fasilitas::all();
+    //         $siswas = Siswa::select('kelurahan', 'kecamatan')->selectRaw('count(*) as total')->groupBy('kelurahan', 'kecamatan')->get();
+
+    //         return view('layouts.header', ['visiMisi' => $visiMisi, 'kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas]);
+    // }
+
+
+
+    // public function profilsekolah()
+    // {
+    //     $programs = Program::all();
+    //     $visiMisi = Visi_misi::first();
+    //     $kegiatans = Kegiatan::all();
+    //     return view('frontend.profilsekolah', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
+    // }
+
+    // public function keuanganSekolah()
+    // {
+    //     $harga = Harga::all();
+    //     $persyaratan = Persyaratan::all();
+    //     return view('frontend.keuanganSekolah', ['harga' => $harga, 'persyaratan' => $persyaratan]);
+    // }
+
+    // public function ekstrakulikulerSekolah()
+    // {
+    //     $ekstrakulikuler = Ekstrakulikuler::all();
+    //     return view('frontend.ekstrakulikulerSekolah', ['ekstrakulikuler' => $ekstrakulikuler]);
+    // }
+
+    // public function kegiatanSekolah()
+    // {
+    //     $kegiatans = Kegiatan::all();
+
+    //     return view('frontend.kegiatanSekolah', ['kegiatans' => $kegiatans]);
+    // }
+
+    // public function ekstrakurikuler()
+    // {
+    //     return view('frontend.ekstrakurikuler');
+    // }
+
+    // public function prestasiSekolah()
+    // {
+    //     $prestasis = Prestasi::all(); 
+
+    //     return view('frontend.prestasiSekolah', ['prestasis' => $prestasis]);
+    // }
+
+    // public function tendikSekolah()
+    // {
+    //     $tendiks = Tendik::all();
+
+    //     return view('frontend.tendikSekolah', ['tendiks' => $tendiks]);
+    // }
+
+    // public function fasil()
+    // {
+    //     $programs = Program::all();
+    //     $fasilitas = Fasilitas::all();
+
+    //     return view('frontend.fasil', ['fasilitas' => $fasilitas, 'programs' => $programs]);
+    // }
+
+        /*public function footer()
+    {
+        $programs = Program::all();
+        $kegiatans = Kegiatan::orderBy('created_at', 'desc')->take(4)->get(); 
+        return view('layouts.footer', ['programs' => $programs, 'kegiatans' => $kegiatans]);
+    }*/
 }

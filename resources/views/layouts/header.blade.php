@@ -272,7 +272,7 @@
         <header class="d-flex flex" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
             <div class="container-fluid px-0 ">
                 <nav class="navbar navbar-expand-lg">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex">
                         <img src="/images/v267_2456.png" class="logo" width="40" height="32" alt="Logo">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -315,6 +315,7 @@
         </div><div class="image-container">
         </div>
         </div>
+        
         <div class="container">
             <div class="mt-5">
                 <div style="text-align: center;">

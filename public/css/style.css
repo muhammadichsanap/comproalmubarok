@@ -1,0 +1,302 @@
+
+*{
+    font-family: poppins;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Mencegah scroll horizontal di seluruh halaman */
+}
+
+/* global */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.title {
+  margin-top: 7rem !important;
+}
+
+.title2 {
+  margin-top: 3rem !important;
+}
+
+.big-title {
+  font-size: 3.5rem;
+}
+.container {
+  
+}
+
+/* navbar */
+
+.navbar {
+    background-color: #F27F0C;
+    position: fixed;
+    
+}
+
+.navjar {
+    width:  65%;
+    
+}
+
+.nav-link {
+    color:  #ffffff;
+    font-weight: 500;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+/* beranda */
+
+.image1 {
+    position: relative;
+    display: inline-block;
+    padding-left: 0%;  
+}
+
+.full-screen-image {
+    width: 100vw;
+    /* Lebar viewport */
+    height: 100vh;
+    /* Tinggi viewport */
+    object-fit: cover;
+    /* Memastikan gambar mengisi seluruh area tanpa distorsi */
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;  
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 100%;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    width: 50%;
+    border-radius: 10px;
+    margin: 0 auto;
+    place-items: center;
+    box-sizing: border-box;
+  }
+  
+  .grid-item {
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .grid-item .subtitle2 {
+    font-size: 1rem;
+  }
+
+  .card {
+    display: flex;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    width: 1054px;
+    margin: 0 auto;
+  }
+
+  .btn {
+    font-weight: 700;
+    padding: 10 20 10 20;
+    font-size: 0.8rem;
+    border-radius: 0%;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #002147;
+  }
+
+  .card-bottom {
+    margin-bottom: 0%;
+  }
+
+  .xtra {
+    width: 100%;
+    background-color: #F9F9F9;
+  }
+
+  .ex-card {
+    background-color: #F27F0C;
+    color: white;
+    height: 150px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+
+  .xtra-outer-container {
+    display: flex;
+    /* position: absolute; */
+    justify-content: center;
+    background-color: #F9F9F9;
+    width: 100%;
+    left: 0%;
+  }
+
+  .xtra-inner-container {
+    width: 50%;
+  }
+
+  .tendik-card {
+    background-color: #F27F0C;
+
+  }
+
+  .tendik-card .card-title {
+    color: #ffffff;
+  }
+
+  .tendik-card .card-text {
+    color: #002147;
+    font-weight: 500;
+  }
+
+  .fasilitas {
+    position: relative;
+    background-color: #F27F0C;
+  }
+
+  .fasil-card {
+    background-color: #ffffff;
+    color: #F27F0C;
+    height: 150px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+
+  .fasilitas-outer-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    background-color: #F27F0C;
+    width: 100%;
+    left: 0%;
+    right: 0%;
+}
+
+.fasilitas-inner-container {
+    width: 50%;
+}
+
+
+.profil-card {
+  width: 100%;
+
+}
+
+.title-profil {
+  font-size: 2rem;
+  color: #F27F0C;
+}
+
+
+.title-profil-text {
+  font-size: 1.1rem;
+  color: black;
+}
+
+.line-profil {
+  color: #F27F0C;
+}
+
+.title-prestasi {
+  font-size: 1.3rem;
+  color: #F27F0C;
+  font-weight: 600;
+}
+
+.title-prestasi2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #002147;
+}
+
+.split-para { 
+  display:block;
+}
+.split-para span { 
+  display:block;
+  float:right;
+  text-align: right;
+}
+
+.total {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.fasil-content {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.fasil-card2 {
+  background-color: #F27F0C;
+  border-radius: 5px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.baris-fasil {
+  
+}
+
+
+/* // large screen  */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 25px;
+  }
+}
+
+/* // Tablet screen  */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    column-gap: 20px;
+  }
+  .card {
+    width: 80%; /* Ubah ukuran sesuai kebutuhan pada layar yang lebih besar */
+  }
+}
+
+/* // Mobile screen  */
+
+@media (max-width: 450px) {
+  html {
+    font-size: 12px;
+  }
+
+  .text-overlay {
+    font-size: 3rem;
+  }
+  .card {
+    width: 70%; /* Ubah ukuran sesuai kebutuhan pada layar yang lebih besar */
+  }
+}

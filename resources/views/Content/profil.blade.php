@@ -12,8 +12,8 @@
                 <div class="profil-card mb-3">
                     <div class="card card-body p-5">
                         <h5 class="title-profil card-title orange-text">TENTANG</h5>
-                        @foreach ($programs as $program)
-                            <p class="card-text">{{ $program->nama_program }}</p>
+                        @foreach ($tentang as $tentang)
+                            <p class="card-text">{{ $tentang->tentang }}</p>
                         @endforeach
                         <hr class="line-profil">
                     </div>
@@ -23,10 +23,12 @@
             <div class="mt-5 d-flex justify-content-center">
                 <div class="profil-card mb-3">
                     <div class="card card-body p-5">
-                        <h5 class="title-profil card-title orange-text">VISI</h5>
-                        <p class="title-profil-text card-text">{{ $visiMisi->visi }}</p>
-                        <h5 class="title-profil card-title orange-text">MISI</h5>
-                        <p class="title-profil-text card-text">{{ $visiMisi->misi }}</p>
+                        <h5 class="title-profil card-title orange-text">Visi</h5>
+                        <p class="title-profil-text card-text">{{ $visi->visi }}</p> 
+                        <h5 class="title-profil card-title orange-text">Misi</h5>
+                        @foreach ($misi as $index => $item)
+                            <p class="title-profil-text card-text">{{ $index + 1 }}. {{ $item->misi }} </p> 
+                        @endforeach
                         <hr class="line-profil">
                     </div>
                 </div>

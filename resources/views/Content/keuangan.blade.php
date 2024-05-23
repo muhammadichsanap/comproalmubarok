@@ -17,8 +17,16 @@
                         <p></p>
                         <p class="card-title">PERSYARATAN</p>
                         <p></p>
-                        @foreach ($persyaratan as $persyaratan)
-                            <p class="card-text">{{ $persyaratan->syarat }}</p>
+                        @foreach ($persyaratan as $index => $persyaratan)
+                            @if ($index == 1)
+                                <p class="card-text">
+                                    <a href="https://docs.google.com/document/d/1Htwn5YCJgNv2CvmpjsRcPOUc-iHg7aa0untC9e0FuH0/edit" target="_blank">
+                                        {{ $persyaratan->syarat }}
+                                    </a>
+                                </p>
+                            @else
+                                <p class="card-text highlight-text">{{ $persyaratan->syarat }}</p>
+                            @endif
                         @endforeach
                     </div>
                     <hr class="line-profil">

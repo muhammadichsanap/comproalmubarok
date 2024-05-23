@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class KegiatanRepository
  * @package App\Repositories
- * @version April 25, 2024, 11:53 am UTC
+ * @version May 21, 2024, 1:40 pm WIB
 */
 
 class KegiatanRepository extends BaseRepository
@@ -19,6 +19,7 @@ class KegiatanRepository extends BaseRepository
     protected $fieldSearchable = [
         'nama_kegiatan',
         'keterangan',
+        'link_url',
         'gambar'
     ];
 

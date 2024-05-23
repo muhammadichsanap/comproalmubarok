@@ -10,6 +10,12 @@
     {!! Form::text('keterangan', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Link Url Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('link_url', 'Link Url:') !!}
+    {!! Form::text('link_url', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Gambar Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('gambar', 'Gambar:') !!}

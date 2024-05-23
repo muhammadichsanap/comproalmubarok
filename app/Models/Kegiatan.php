@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 
 
 
 /**
  * Class Kegiatan
  * @package App\Models
- * @version April 25, 2024, 11:53 am UTC
+ * @version May 21, 2024, 1:40 pm WIB
  *
  * @property string $nama_kegiatan
  * @property string $keterangan
+ * @property string $link_url
  * @property string $gambar
  */
 class Kegiatan extends Model
@@ -27,6 +28,7 @@ class Kegiatan extends Model
     public $fillable = [
         'nama_kegiatan',
         'keterangan',
+        'link_url',
         'gambar'
     ];
 
@@ -39,6 +41,7 @@ class Kegiatan extends Model
         'id' => 'integer',
         'nama_kegiatan' => 'string',
         'keterangan' => 'string',
+        'link_url' => 'string',
         'gambar' => 'string'
     ];
 

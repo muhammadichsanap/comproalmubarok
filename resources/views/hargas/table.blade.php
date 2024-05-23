@@ -12,7 +12,7 @@
         <th>Spp</th>
         <th>Total Putra</th>
         <th>Total Putri</th>
-            <th colspan="3">Action</th>
+           {{-- <th colspan="3">Action</th>--}}
         </tr>
         </thead>
         <tbody>
@@ -28,9 +28,9 @@
             <td>{{ $harga->spp }}</td>
             <td>{{ $harga->total_putra }}</td>
             <td>{{ $harga->total_putri }}</td>
-                <td width="120">
+                {{--<td width="120">
                     {!! Form::open(['route' => ['hargas.destroy', $harga->id], 'method' => 'delete']) !!}
-                    <div class='btn-group'>
+                      <div class='btn-group'>
                         <a href="{{ route('hargas.show', [$harga->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
@@ -42,7 +42,7 @@
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
-                </td>
+                </td>--}}
             </tr>
         @endforeach
         </tbody>

@@ -10,14 +10,14 @@
         <div class="grid-container">
             <div class="grid-item justify-content-center">Visi
                 <div class="subtitle2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, ab.
-                    Odit rerum consequatur harum quisquam ducimus eum sunt.
+                    {{ $visi->first()->visi }}
                 </div>
             </div>
             <div class="grid-item">Misi
                 <div class="subtitle2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, ab.
-                    Odit rerum consequatur harum quisquam ducimus eum sunt.
+                    @foreach ($misi as $index => $item)
+                        <p>{{ $index + 1 }}. {{ $item->misi }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -30,15 +30,17 @@
         <div class="mt-5 d-flex justify-content-center">
             <div class="row justify-content-center">
                 @php
-                    $sortedKegiatans = $kegiatans->sortBy('updated_at')->take(3);
+                    $sortedKegiatans = $kegiatans->sortByDesc('updated_at')->take(3);
                 @endphp
                 @foreach ($sortedKegiatans as $kegiatan)
                     <div class="col-md-12">
                         <div class="card mb-3">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ asset('images/' . $kegiatan->gambar) }}" class="img-fluid rounded-start"
-                                        alt="{{ $kegiatan->nama_kegiatan }}">
+                                    <a href="{{ $kegiatan->link_url }}" target="_blank">
+                                        <img src="{{ asset('images/' . $kegiatan->gambar) }}" class="img-fluid rounded-start"
+                                            alt="{{ $kegiatan->nama_kegiatan }}">
+                                    </a>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -57,6 +59,7 @@
                 @endforeach
             </div>
         </div>
+    </div>
         <div class="mt-5 d-flex justify-content-center">
             <p class="d-inline-flex gap-1">
                 <a href="/kegiatan" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA KEGIATAN</a>
@@ -100,35 +103,16 @@
                         <h1>Ekstrakulikuler</h1>
                     </div>
                     <div class="row-ex row row-cols-2 row-cols-lg-4 g-2 g-lg-3 mt-5">
-                        <div class="col">
-                            <div class="ex-card p-3">Karate</div>
-                        </div>
-                        <div class="col">
-                            <div class="ex-card p-3">Taekwondo</div>
-                        </div>
-                        <div class="col">
-                            <div class="ex-card p-3">Menari</div>
-                        </div>
-                        <div class="col">
-                            <div class="ex-card p-3">Marawis</div>
-                        </div>
-                        <div class="col">
-                            <div class="ex-card p-3">Bahasa Inggris</div>
-                        </div>
-                        <div class="col">
-                            <div class="ex-card p-3">Pencak Silat</div>
-                        </div>
-                        <div class="col">
-                            <div class="ex-card p-3">Melukis</div>
-                        </div>
-                        <div class="col">
-                            <div class="ex-card p-3">Rohis</div>
-                        </div>
+                        @foreach ($ekstrakulikuler as $ekstrakulikuler)
+                            <div class="col">
+                                <div class="ex-card p-3">{{ $ekstrakulikuler->nama_ekstrakulikuler }}</div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="mt-5 d-flex justify-content-center mb-5">
                     <p class="d-inline-flex gap-1">
-                        <a href="/kegiatan" class="btn active" role="button" aria-pressed="true">SELENGKAPNYA</a>
+                        <a href="/ekstrakulikuler" class="btn active" role="button" aria-pressed="true">SELENGKAPNYA</a>
                     </p>
                 </div>
             </div>
@@ -190,7 +174,7 @@
         </div>
         <div class="mt-5 d-flex justify-content-center">
             <p class="d-inline-flex gap-1">
-                <a href="/kegiatan" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA TENDIK</a>
+                <a href="/tendik" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA TENDIK</a>
             </p>
         </div>
     </div>
@@ -204,35 +188,19 @@
                     <h1>Fasilitas</h1>
                 </div>
                 <div class="row-ex row row-cols-2 row-cols-lg-4 g-2 g-lg-3 mt-5">
-                    <div class="col">
-                        <div class="fasil-card p-3">Masjid</div>
-                    </div>
-                    <div class="col">
-                        <div class="fasil-card p-3">Ruang Belajar</div>
-                    </div>
-                    <div class="col">
-                        <div class="fasil-card p-3">Perpustakaan</div>
-                    </div>
-                    <div class="col">
-                        <div class="fasil-card p-3">Lapangan</div>
-                    </div>
-                    <div class="col">
-                        <div class="fasil-card p-3">Laboratorium</div>
-                    </div>
-                    <div class="col">
-                        <div class="fasil-card p-3">Kantin</div>
-                    </div>
-                    <div class="col">
-                        <div class="fasil-card p-3">Kamar Mandi</div>
-                    </div>
-                    <div class="col">
-                        <div class="fasil-card p-3">Aula</div>
-                    </div>
+                    @foreach ($fasilitas as $item)
+                        <div class="col">
+                            <div class="fasil-card p-3">
+                                <div>{{ $item->nama_fasilitas }}</div>
+                                <div>{{ $item->jumlah_fasilitas }}</div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="d-flex justify-content-center mb-5">
                 <p class="d-inline-flex gap-1">
-                    <a href="/kegiatan" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA FASILITAS</a>
+                    <a href="/fasilitasSekolah" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA FASILITAS</a>
                 </p>
             </div>
         </div>
@@ -275,24 +243,26 @@
             <h1>Penyebaran Murid</h1>
         </div>
         <div class="mt-5 d-flex justify-content-center">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Kelurahan</th>
-                        <th scope="col">Kecamatan</th>
-                        <th scope="col">Jumlah Siswa</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($siswas as $siswa)
+            <div class="table-responsive" style="max-width: 800px; margin: auto;">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td>{{ $siswa->kelurahan }}</td>
-                            <td>{{ $siswa->kecamatan }}</td>
-                            <td>{{ $siswa->total }}</td>
+                            <th class="text-center">Kelurahan</th>
+                            <th class="text-center">Kecamatan</th>
+                            <th class="text-center">Jumlah Siswa</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($siswas as $siswa)
+                            <tr>
+                                <td class="text-center">{{ $siswa->kelurahan }}</td>
+                                <td class="text-center">{{ $siswa->kecamatan }}</td>
+                                <td class="text-center">{{ $siswa->total }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     

@@ -32,9 +32,11 @@ class SekolahController extends AppBaseController
     public function index(Request $request)
     {
         $sekolahs = $this->sekolahRepository->paginate(10);
+        $hasSekolah = $sekolahs->count() > 0;
 
         return view('sekolahs.index')
-            ->with('sekolahs', $sekolahs);
+            ->with('sekolahs', $sekolahs)
+            ->with('hasSekolah', $hasSekolah);
     }
 
     /**

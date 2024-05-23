@@ -11,7 +11,7 @@
                 <th>No Wa</th>
                 <th>Email</th>
                 <th>Gambar</th>
-                <th>Action</th>
+                {{--<th>Action</th>--}}
             </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
                             <p>No image available</p>
                         @endif
                     </td>
-                    <td width="120">
+                    {{--<td width="120">
                         {!! Form::open(['route' => ['sekolahs.destroy', $sekolah->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             <a href="{{ route('sekolahs.show', [$sekolah->id]) }}"
@@ -46,7 +46,7 @@
                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                         </div>
                         {!! Form::close() !!}
-                    </td>
+                    </td>--}}
                 </tr>
             @endforeach
         </tbody>

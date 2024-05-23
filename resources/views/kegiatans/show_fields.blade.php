@@ -16,6 +16,12 @@
     <p>{{ $kegiatan->keterangan }}</p>
 </div>
 
+<!-- Link Url Field -->
+<div class="col-sm-12">
+    {!! Form::label('link_url', 'Link Url:') !!}
+    <p>{{ $kegiatan->link_url }}</p>
+</div>
+
 <!-- Gambar Field -->
 <div class="col-sm-12">
     {!! Form::label('gambar', 'Gambar:') !!}

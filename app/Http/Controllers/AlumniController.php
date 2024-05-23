@@ -7,8 +7,13 @@ use App\Http\Requests\UpdateAlumniRequest;
 use App\Repositories\AlumniRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Imports\AlumniImport;
+use App\Exports\AlumniExport;
+use App\Models\Alumni;
+use Maatwebsite\Excel\Facades\Excel;
 use Laracasts\Flash\Flash;
 use Response;
+use Illuminate\Support\Facades\Log;
 
 class AlumniController extends AppBaseController
 {
@@ -152,5 +157,29 @@ class AlumniController extends AppBaseController
         Flash::success('Alumni deleted successfully.');
 
         return redirect(route('alumnis.index'));
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:csv,txt,xls,xlsx'
+        ]);
+
+        Excel::import(new AlumniImport, $request->file('file'));
+
+        return redirect()->route('alumnis.index')->with('success', 'Alumni imported successfully.');
+    }
+
+    public function export()
+    {
+        Log::info('Export method called');
+        return Excel::download(new AlumniExport, 'Data Alumni.xlsx');
+    }
+
+    public function deleteAll()
+    {
+        Log::info('DeleteAll method called');
+        Alumni::truncate();
+        return redirect()->route('alumnis.index')->with('success', 'All alumni data deleted successfully.');
     }
 }

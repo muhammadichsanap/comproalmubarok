@@ -71,3 +71,19 @@
     font-weight: 600;
     text-transform: uppercase;
 }
+
+.highlight-link {
+    background-color: #ffeb3b;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+}
+.highlight-link:hover {
+    background-color: #fdd835;
+}
+.highlight-text {
+    background-color: #e0f7fa;
+    padding: 5px;
+    border-radius: 5px;
+}

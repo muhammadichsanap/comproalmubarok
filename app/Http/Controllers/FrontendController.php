@@ -16,7 +16,9 @@ use App\Models\Siswa;
 use App\Models\Tendik;
 use App\Models\User;
 use App\Models\Video;
-use App\Models\Visi_misi;
+use App\Models\Visi;
+use App\Models\Misi;
+use App\Models\Tentang;
 use Laracasts\Flash\Flash;
 
 class FrontendController extends Controller
@@ -38,7 +40,9 @@ class FrontendController extends Controller
             'tendiks' => Tendik::all(),
             'users' => User::all(),
             'videos' => Video::all(),
-            'visiMisis' => Visi_misi::all()
+            'visi' => Visi::all(),
+            'misi' => Misi::all(),
+            'tentang' => Tentang::all()
         ];
 
         return view('frontend.home', $data);
@@ -53,30 +57,32 @@ class FrontendController extends Controller
 
     public function beranda()
     {
-            $visiMisi = Visi_misi::first();
+            $visi = Visi::all();
+            $misi = Misi::all();
+            $tentang = Tentang::all();
             $kegiatans = Kegiatan::all();
-            $ekstrakulikuler = Ekstrakulikuler::all();
-            $tendiks = Tendik::all();
+            $ekstrakulikuler = Ekstrakulikuler::take(8)->get();
+            $tendiks = Tendik::take(6)->get();
             $programs = Program::all();
-            $fasilitas = Fasilitas::all();
+            $fasilitas = Fasilitas::take(8)->get();
             $siswas = Siswa::select('kelurahan', 'kecamatan')->selectRaw('count(*) as total')->groupBy('kelurahan', 'kecamatan')->get();
 
-            return view('Content.beranda', ['visiMisi' => $visiMisi, 'kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas]);
+            return view('Content.beranda', ['kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas, 'visi' => $visi, 'misi' => $misi, 'tentang' => $tentang]);
     }
 
     public function profil()
     {
         $programs = Program::all();
-        $visiMisi = Visi_misi::first();
-        $kegiatans = Kegiatan::all();
-        return view('Content.profil', ['programs' => $programs, 'visiMisi' => $visiMisi, 'kegiatans' => $kegiatans]);
+        $visi = Visi::first();
+        $misi = Misi::all();
+        $tentang = Tentang::all();
+        return view('Content.profil', ['programs' => $programs, 'visi' => $visi, 'misi' => $misi, 'tentang' => $tentang]);
     }
 
     public function kegiatan()
     {
-        $kegiatans = Kegiatan::all();
-
-        return view('Content.kegiatan', ['kegiatans' => $kegiatans]);
+        $kegiatans = Kegiatan::orderBy('updated_at', 'desc')->get();
+        return view('Content.kegiatan', compact('kegiatans'));
     }
 
     public function keuangan()

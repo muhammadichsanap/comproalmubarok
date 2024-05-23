@@ -5,13 +5,20 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Sekolah</h1>
+                    <h1>Data Sekolah</h1>
                 </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('sekolahs.create') }}">
-                        Add New
-                    </a>
+                <div class="col-sm-6 text-right">
+                    @if ($hasSekolah)
+                        <a class="btn btn-primary float-right"
+                           href="{{ route('sekolahs.edit', [$sekolahs->first()->id]) }}">
+                            Edit
+                        </a>
+                    @else
+                        <a class="btn btn-primary float-right"
+                           href="{{ route('sekolahs.create') }}">
+                            Tambah
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -38,4 +45,3 @@
     </div>
 
 @endsection
-

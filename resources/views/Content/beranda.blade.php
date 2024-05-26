@@ -1,6 +1,10 @@
 @extends('layouts.layout')
 @include('Component.navbar')
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
 <div class="image1">
     <img src="/images/v267_2416.png" class="full-screen-image" alt="Logo">
 </div>
@@ -239,32 +243,72 @@
     </div> --}}
 
     <div class="sebar-outer-container mt-5">
-        <div style="text-align: center;">
-            <h1>Penyebaran Murid</h1>
-        </div>
-        <div class="mt-5 d-flex justify-content-center">
-            <div class="table-responsive" style="max-width: 800px; margin: auto;">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Kelurahan</th>
-                            <th class="text-center">Kecamatan</th>
-                            <th class="text-center">Jumlah Siswa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($siswas as $siswa)
-                            <tr>
-                                <td class="text-center">{{ $siswa->kelurahan }}</td>
-                                <td class="text-center">{{ $siswa->kecamatan }}</td>
-                                <td class="text-center">{{ $siswa->total }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        <div class="container">
+            <div style="text-align: center;">
+                <h1>Peta Penyebaran Murid</h1>
+            </div>
+                <div class="mt-5 d-flex justify-content-center">
+                <div id="map" style="height: 500px; width: 800px;">
+                </div>
             </div>
         </div>
     </div>
-    
 
-</div>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">© 2023 SDIT AL MUBAROKAH. All rights reserved.</span>
+        </div>
+    </footer>
+
+    </div>
+        <script>
+            var map = L.map('map').setView([-6.914744, 107.609810], 10);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var heatData = [
+                @foreach($siswas as $siswa)
+                    [{{ $siswa->latitude }}, {{ $siswa->longitude }}, {{ $siswa->total }}],
+                @endforeach
+            ];
+
+            L.heatLayer(heatData, {
+                radius: 30,
+                blur: 15,
+                maxZoom: 17,
+                gradient: {
+                    0.1: 'blue',
+                    0.3: 'lime',
+                    0.5: 'yellow',
+                    0.7: 'orange',
+                    1.0: 'red'
+                }
+            }).addTo(map);
+
+            @foreach($siswas as $siswa)
+                var marker = L.marker([{{ $siswa->latitude }}, {{ $siswa->longitude }}])
+                    .addTo(map)
+                    .bindPopup("Kecamatan: {{ $siswa->kecamatan }}<br>Jumlah Siswa: {{ $siswa->total }}", { autoPan: false });
+
+                marker.on('mouseover', function (e) {
+                    this.openPopup();
+                });
+
+                marker.on('mouseout', function (e) {
+                    this.closePopup();
+                });
+
+                marker.on('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            @endforeach
+
+            map.on('click', function(e) {
+                e.preventDefault();
+                e.originalEvent.stopPropagation();
+            });
+        </script>
+    </div>

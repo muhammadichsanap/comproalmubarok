@@ -65,12 +65,12 @@ class HargaController extends AppBaseController
             'seragam_putra' => 'required|numeric|min:0',
             'seragam_putri' => 'required|numeric|min:0',
             'spp' => 'required|numeric|min:0',
-            'total_putra' => 'required|numeric|min:0',
-            'total_putri' => 'required|numeric|min:0',
+            //'total_putra' => 'required|numeric|min:0',
+            //'total_putri' => 'required|numeric|min:0',
         ]);
         
         $input = $request->all();
-
+    
         foreach ($input as $key => $value) {
             if (is_numeric($value) && $value < 0) {
                 Flash::error('Nilai tidak boleh negatif.');

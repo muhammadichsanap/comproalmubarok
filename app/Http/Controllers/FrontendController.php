@@ -63,6 +63,7 @@ class FrontendController extends Controller
             $tentang = Tentang::all();
             $kegiatans = Kegiatan::all();
             $ekstrakulikuler = Ekstrakulikuler::take(8)->get();
+            $prestasis = Prestasi::all();
             $tendiks = Tendik::take(6)->get();
             $programs = Program::all();
             $fasilitas = Fasilitas::take(8)->get();
@@ -77,7 +78,7 @@ class FrontendController extends Controller
             return $siswa;
             });
 
-            return view('Content.beranda', ['kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas, 'visi' => $visi, 'misi' => $misi, 'tentang' => $tentang]);
+            return view('Content.beranda', ['kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'prestasis' => $prestasis, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas, 'visi' => $visi, 'misi' => $misi, 'tentang' => $tentang]);
     }
 
     private function getLatitude($kecamatan)

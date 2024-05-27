@@ -4,7 +4,7 @@
 <div class="container w-60">
     <div class="kegiatan mt-5 mb-5">
         <div class="title" style="text-align: center;">
-            <h1 class="big-title">KEUANGAN</h1>
+            <h1 class="big-title">RINCIAN BIAYA</h1>
         </div>
         <div class="mt-5 d-flex justify-content-center">
             <div class="profil-card mb-3">

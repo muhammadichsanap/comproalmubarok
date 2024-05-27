@@ -35,7 +35,7 @@
                     <li class="nav-item"><a href="/beranda" class="nav-link">BERANDA</a></li>
                     <li class="nav-item"><a href="/profil" class="nav-link">PROFIL</a></li>
                     <li class="nav-item"><a href="/kegiatan" class="nav-link">KEGIATAN</a></li>
-                    <li class="nav-item"><a href="/keuangan" class="nav-link">KEUANGAN</a></li>
+                    <li class="nav-item"><a href="/keuangan" class="nav-link">RINCIAN BIAYA</a></li>
                     <li class="nav-item"><a href="/ekstrakulikuler" class="nav-link">EKSTRAKULIKULER</a></li>
                     <li class="nav-item"><a href="/prestasi" class="nav-link">PRESTASI</a></li>
                     <li class="nav-item"><a href="/tendik" class="nav-link">TENDIK</a></li>

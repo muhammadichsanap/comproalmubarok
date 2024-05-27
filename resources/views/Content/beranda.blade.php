@@ -6,7 +6,7 @@
 <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
 <div class="image1">
-    <img src="/images/v267_2416.png" class="full-screen-image" alt="Logo">
+    <img src="/images/school.jpg" class="full-screen-image" alt="Logo">
 </div>
 
 <div class="container w-60">

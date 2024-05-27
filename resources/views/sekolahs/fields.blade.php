@@ -37,7 +37,7 @@
 <!-- No Wa Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('no_wa', 'No Wa:') !!}
-    {!! Form::number('no_wa', null, ['class' => 'form-control']) !!}
+    {!! Form::text('no_wa', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Email Field -->

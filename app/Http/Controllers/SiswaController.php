@@ -5,18 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateSiswaRequest;
 use App\Http\Requests\UpdateSiswaRequest;
 use App\Repositories\SiswaRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use Response;
-use App\Imports\SiswaImport; // Sesuaikan namespace
+use App\Imports\SiswaImport;
+use App\Exports\SiswaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Siswa;
-use Illuminate\Support\Facades\Log;
 
-class SiswaController extends AppBaseController
+class SiswaController extends Controller
 {
-    /** @var SiswaRepository $siswaRepository*/
+    /** @var SiswaRepository $siswaRepository */
     private $siswaRepository;
 
     public function __construct(SiswaRepository $siswaRepo)
@@ -24,13 +23,6 @@ class SiswaController extends AppBaseController
         $this->siswaRepository = $siswaRepo;
     }
 
-    /**
-     * Display a listing of the Siswa.
-     *
-     * @param Request $request
-     *
-     * @return Response
-     */
     public function index(Request $request)
     {
         $siswas = $this->siswaRepository->paginate(10);
@@ -39,23 +31,11 @@ class SiswaController extends AppBaseController
             ->with('siswas', $siswas);
     }
 
-    /**
-     * Show the form for creating a new Siswa.
-     *
-     * @return Response
-     */
     public function create()
     {
         return view('siswas.create');
     }
 
-    /**
-     * Store a newly created Siswa in storage.
-     *
-     * @param CreateSiswaRequest $request
-     *
-     * @return Response
-     */
     public function store(CreateSiswaRequest $request)
     {
         $input = $request->all();
@@ -67,13 +47,6 @@ class SiswaController extends AppBaseController
         return redirect(route('siswas.index'));
     }
 
-    /**
-     * Show the form for editing the specified Siswa.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
     public function edit($id)
     {
         $siswa = $this->siswaRepository->find($id);
@@ -87,14 +60,6 @@ class SiswaController extends AppBaseController
         return view('siswas.edit')->with('siswa', $siswa);
     }
 
-    /**
-     * Update the specified Siswa in storage.
-     *
-     * @param int $id
-     * @param UpdateSiswaRequest $request
-     *
-     * @return Response
-     */
     public function update($id, UpdateSiswaRequest $request)
     {
         $siswa = $this->siswaRepository->find($id);
@@ -112,15 +77,6 @@ class SiswaController extends AppBaseController
         return redirect(route('siswas.index'));
     }
 
-    /**
-     * Remove the specified Siswa from storage.
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     *
-     * @return Response
-     */
     public function destroy($id)
     {
         $siswa = $this->siswaRepository->find($id);
@@ -138,34 +94,41 @@ class SiswaController extends AppBaseController
         return redirect(route('siswas.index'));
     }
 
-    // Tambahkan method importexcel di dalam SiswaController
-    public function importexcel(Request $request){
-        // Validasi untuk memastikan file yang di-upload adalah file Excel
+    public function exportexcel()
+    {
+        $siswas = Siswa::all();
+
+        if ($siswas->isEmpty()) {
+            return redirect()->route('siswas.index')->with('warning', 'Tidak ada data untuk diekspor.');
+        }
+
+        return Excel::download(new SiswaExport, 'Data Siswa.xlsx');
+    }
+
+    public function importexcel(Request $request)
+    {
         $request->validate([
             'file' => 'required|file|mimes:xlsx,xls,csv'
         ]);
-    
+
         if ($request->hasFile('file')) {
             $data = $request->file('file');
             $namafile = $data->getClientOriginalName();
-    
-            // Membuat direktori jika tidak ada
+
             $targetDir = 'Siswadata';
             if (!file_exists($targetDir)) {
                 mkdir($targetDir, 0777, true);
             }
-    
-            // Menentukan path tujuan
+
             $destinationPath = public_path($targetDir . '/' . $namafile);
-    
-            // Memindahkan file
+
             if ($data->move($targetDir, $namafile)) {
                 Excel::import(new SiswaImport, $destinationPath);
                 Flash::success('File berhasil diimpor.');
             } else {
                 Flash::error('Gagal memindahkan file.');
             }
-    
+
             return redirect()->back();
         } else {
             Flash::error('File tidak ditemukan.');
@@ -173,7 +136,6 @@ class SiswaController extends AppBaseController
         }
     }
 
-    // Method show untuk menampilkan detail siswa
     public function show($id)
     {
         $siswa = $this->siswaRepository->find($id);
@@ -185,5 +147,11 @@ class SiswaController extends AppBaseController
         }
 
         return view('siswas.show')->with('siswa', $siswa);
+    }
+
+    public function deleteAll()
+    {
+        Siswa::truncate();
+        return redirect()->route('siswas.index')->with('success', 'All siswa data deleted successfully.');
     }
 }

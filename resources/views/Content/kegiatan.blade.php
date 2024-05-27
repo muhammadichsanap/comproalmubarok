@@ -15,8 +15,10 @@
                             <div class="card mb-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{ asset('images/' . $kegiatan->gambar) }}" class="img-fluid rounded-start"
-                                            alt="{{ $kegiatan->nama_kegiatan }}">
+                                        <a href="{{ $kegiatan->link_url }}" target="_blank">
+                                            <img src="{{ asset('images/' . $kegiatan->gambar) }}" class="img-fluid rounded-start"
+                                                alt="{{ $kegiatan->nama_kegiatan }}">
+                                            </a>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -36,6 +38,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

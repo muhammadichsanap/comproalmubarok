@@ -30,9 +30,11 @@ class HargaController extends AppBaseController
     public function index(Request $request)
     {
         $hargas = $this->hargaRepository->paginate(10);
+        $hasHarga = $hargas->count() > 0;
 
         return view('hargas.index')
-            ->with('hargas', $hargas);
+            ->with('hargas', $hargas)
+            ->with('hasHarga', $hasHarga);
     }
 
     /**
@@ -54,7 +56,31 @@ class HargaController extends AppBaseController
      */
     public function store(CreateHargaRequest $request)
     {
+        $request->validate([
+            'pengembangan' => 'required|numeric|min:0',
+            'pemeliharaan_gedung' => 'required|numeric|min:0',
+            'peningkatan_mutu' => 'required|numeric|min:0',
+            'kegiatan_belajar' => 'required|numeric|min:0',
+            'buku_paket' => 'required|numeric|min:0',
+            'seragam_putra' => 'required|numeric|min:0',
+            'seragam_putri' => 'required|numeric|min:0',
+            'spp' => 'required|numeric|min:0',
+            //'total_putra' => 'required|numeric|min:0',
+            //'total_putri' => 'required|numeric|min:0',
+        ]);
+        
         $input = $request->all();
+    
+        foreach ($input as $key => $value) {
+            if (is_numeric($value) && $value < 0) {
+                Flash::error('Nilai tidak boleh negatif.');
+                return redirect()->back()->withInput();
+            }
+        }
+
+        $input['total_putra'] = $input['pengembangan'] + $input['pemeliharaan_gedung'] + $input['peningkatan_mutu'] + $input['kegiatan_belajar'] + $input['buku_paket'] + $input['seragam_putra'] + $input['spp'];
+        $input['total_putri'] = $input['pengembangan'] + $input['pemeliharaan_gedung'] + $input['peningkatan_mutu'] + $input['kegiatan_belajar'] + $input['buku_paket'] + $input['seragam_putri'] + $input['spp'];
+
 
         $harga = $this->hargaRepository->create($input);
 
@@ -113,6 +139,15 @@ class HargaController extends AppBaseController
      */
     public function update($id, UpdateHargaRequest $request)
     {
+        $input = $request->all();
+
+        foreach ($input as $key => $value) {
+        if (is_numeric($value) && $value < 0) {
+            Flash::error('Nilai tidak boleh negatif.');
+            return redirect()->back()->withInput();
+            }
+        }
+
         $harga = $this->hargaRepository->find($id);
 
         if (empty($harga)) {
@@ -121,7 +156,10 @@ class HargaController extends AppBaseController
             return redirect(route('hargas.index'));
         }
 
-        $harga = $this->hargaRepository->update($request->all(), $id);
+        $input['total_putra'] = $input['pengembangan'] + $input['pemeliharaan_gedung'] + $input['peningkatan_mutu'] + $input['kegiatan_belajar'] + $input['buku_paket'] + $input['seragam_putra'] + $input['spp'];
+        $input['total_putri'] = $input['pengembangan'] + $input['pemeliharaan_gedung'] + $input['peningkatan_mutu'] + $input['kegiatan_belajar'] + $input['buku_paket'] + $input['seragam_putri'] + $input['spp'];
+
+        $harga = $this->hargaRepository->update($input, $id);
 
         Flash::success('Harga updated successfully.');
 

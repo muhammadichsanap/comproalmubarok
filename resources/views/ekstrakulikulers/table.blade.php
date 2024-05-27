@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th>Nama Ekstrakulikuler</th>
-        <th>Keterangan Fasilitas</th>
+        <th>Keterangan Ekstrakulikuler</th>
         <th>Gambar</th>
             <th colspan="3">Action</th>
         </tr>

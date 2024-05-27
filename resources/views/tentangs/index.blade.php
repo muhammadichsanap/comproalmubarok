@@ -1,0 +1,46 @@
+@extends('layouts.app')
+
+@section('content')
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Tentang Sekolah</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    @if ($hasTentang)
+                        <a class="btn btn-primary float-right" href="{{ route('tentangs.edit', [$tentangs->first()->id]) }}">
+                            Edit
+                        </a>
+                    @else
+                        <a class="btn btn-primary float-right" href="{{ route('tentangs.create') }}">
+                            Tambah
+                        </a>    
+                    @endif
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="content px-3">
+
+        @include('flash::message')
+
+        <div class="clearfix"></div>
+
+        <div class="card">
+            <div class="card-body p-0">
+                @include('tentangs.table')
+
+                <div class="card-footer clearfix">
+                    <div class="float-right">
+                        @include('adminlte-templates::common.paginate', ['records' => $tentangs])
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+@endsection
+

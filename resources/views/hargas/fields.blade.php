@@ -47,13 +47,13 @@
 </div>
 
 <!-- Total Putra Field -->
-<div class="form-group col-sm-6">
+{{--<div class="form-group col-sm-6">
     {!! Form::label('total_putra', 'Total Putra:') !!}
     {!! Form::number('total_putra', null, ['class' => 'form-control']) !!}
-</div>
+</div>--}}
 
 <!-- Total Putri Field -->
-<div class="form-group col-sm-6">
+{{--  <div class="form-group col-sm-6">
     {!! Form::label('total_putri', 'Total Putri:') !!}
     {!! Form::number('total_putri', null, ['class' => 'form-control']) !!}
-</div>
+</div>--}}

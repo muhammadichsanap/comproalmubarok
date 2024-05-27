@@ -2,10 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\CompanyProfileController; // Added for Company Profile
+use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AlumniController;
+use App\Imports\AlumniImport;
+use App\Exports\AlumniExport;
+use App\Imports\SiswaImport;
+use App\Exports\SiswaExport;
 use App\Models\Siswa;
 
+// ... sisa kode
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,30 +23,9 @@ use App\Models\Siswa;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
-
-Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
-
-Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
-
-Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
-
-Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
-
-Route::post(
-    'generator_builder/generate-from-file',
-    '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
-)->name('io_generator_builder_generate_from_file');
 
 Route::resource('sekolahs', App\Http\Controllers\SekolahController::class);
 
@@ -56,28 +41,27 @@ Route::resource('hargas', App\Http\Controllers\HargaController::class);
 
 Route::resource('alumnis', App\Http\Controllers\AlumniController::class);
 
+Route::post('alumnis/import', [AlumniController::class, 'import'])->name('alumnis.import');
+Route::get('/exportexcelalumni', [AlumniController::class, 'export'])->name('alumnis.export');
+Route::delete('/deleteAll', [AlumniController::class, 'deleteAll'])->name('alumnis.deleteAll');
+
 Route::resource('prestasis', App\Http\Controllers\PrestasiController::class);
-
-Route::resource('visiMisis', App\Http\Controllers\Visi_misiController::class);
-
-Route::resource('videos', App\Http\Controllers\VideoController::class);
-
-
 
 Route::resource('siswas', App\Http\Controllers\SiswaController::class);
 
-Route::post('/importexcel', [SiswaController::class, 'importexcel'])->name('importexcel');
+Route::delete('siswas/deleteAll', [SiswaController::class, 'deleteAll'])->name('siswas.deleteAll');
+  
+Route::get('/exportexcel', [SiswaController::class, 'exportexcel'])->name('siswas.exportexcel');
+   
+Route::post('/importexcel', [App\Http\Controllers\SiswaController::class, 'importexcel'])->name('siswas.importexcel');
+
+Route::delete('deleteall', [App\Http\Controllers\SiswaController::class, 'deleteAll'])->name('siswas.deleteAll');
 
 Route::get('/header', [App\Http\Controllers\FrontendController::class, 'header']);
 
 Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer']);
 
 Route::get('/profilsekolah', [App\Http\Controllers\FrontendController::class, 'profilsekolah']);
-
-
-//coba
-
-
 
 Route::get('/navbar', [App\Http\Controllers\FrontendController::class, 'navbar']);
 
@@ -97,11 +81,7 @@ Route::get('/fasilitasSekolah', [App\Http\Controllers\FrontendController::class,
 
 Route::get('/tendik', [App\Http\Controllers\FrontendController::class, 'tendik']);
 
-
-
-
 //coba
-
 
 Route::get('/kegiatan', [App\Http\Controllers\FrontendController::class, 'kegiatan']);
 
@@ -119,11 +99,10 @@ Route::get('/tendik', [App\Http\Controllers\FrontendController::class, 'tendik']
 
 Route::resource('kegiatans', App\Http\Controllers\KegiatanController::class);
 
-
-
-
-Route::resource('visiMisis', App\Http\Controllers\Visi_misiController::class);
-
-
-
 Route::resource('persyaratans', App\Http\Controllers\PersyaratanController::class);
+
+Route::resource('visis', App\Http\Controllers\VisiController::class);
+
+Route::resource('misis', App\Http\Controllers\MisiController::class);
+
+Route::resource('tentangs', App\Http\Controllers\TentangController::class);

@@ -55,25 +55,25 @@ class KegiatanController extends AppBaseController
     public function store(CreateKegiatanRequest $request)
     {
         $input = $request->all();
-    
+
         if ($request->hasFile('gambar')) {
             $image = $request->file('gambar');
             $extension = $image->getClientOriginalExtension();
-    
+
             if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
-                Flash::error('File harus berupa gambar dengan ekstensi PNG, JPG, atau JPEG');
+                Flash::error('Gambar harus berupa gambar dengan ekstensi PNG,JPG atau JPEG');
                 return redirect()->back();
             }
-    
+
             $imageName = time() . '.' . $extension;
             $image->move(public_path('images'), $imageName);
             $input['gambar'] = $imageName;
         }
-    
-        $kegiatan = $this->kegiatanRepository->create($input);
-    
-        Flash::success('Kegiatan berhasil disimpan.');
-    
+
+        $tendik = $this->kegiatanRepository->create($input);
+
+        Flash::success('Kegiatan berhasil disimpan');
+
         return redirect(route('kegiatans.index'));
     }
 
@@ -128,12 +128,13 @@ class KegiatanController extends AppBaseController
     public function update($id, UpdateKegiatanRequest $request)
     {
         $kegiatan = $this->kegiatanRepository->find($id);
-    
+
         if (empty($kegiatan)) {
             Flash::error('Kegiatan not found');
+
             return redirect(route('kegiatans.index'));
         }
-    
+
         $input = $request->all();
     
         if ($request->hasFile('gambar')) {
@@ -149,11 +150,11 @@ class KegiatanController extends AppBaseController
             $image->move(public_path('images'), $imageName);
             $input['gambar'] = $imageName;
         }
-    
+
         $this->kegiatanRepository->update($input, $id);
-    
-        Flash::success('Kegiatan updated successfully.');
-    
+
+        Flash::success('Kegiatan updated successfully');
+
         return redirect(route('kegiatans.index'));
     }
 

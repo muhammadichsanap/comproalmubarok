@@ -155,6 +155,11 @@
             @endforeach
         </div>
     </div>
+    <div class="mt-5 d-flex justify-content-center">
+        <p class="d-inline-flex gap-1">
+            <a href="/prestasi" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA PRESTASI</a>
+        </p>
+    </div>
 </div>
 
 

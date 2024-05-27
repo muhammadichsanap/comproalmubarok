@@ -6,7 +6,7 @@
 <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
 <div class="image1">
-    <img src="/images/v267_2416.png" class="full-screen-image" alt="Logo">
+    <img src="/images/school.jpg" class="full-screen-image" alt="Logo">
 </div>
 
 <div class="container w-60">
@@ -154,6 +154,11 @@
                 </div>
             @endforeach
         </div>
+    </div>
+    <div class="mt-5 d-flex justify-content-center">
+        <p class="d-inline-flex gap-1">
+            <a href="/prestasi" class="btn active" role="button" aria-pressed="true">TAMPILKAN SEMUA PRESTASI</a>
+        </p>
     </div>
 </div>
 

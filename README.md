@@ -13,6 +13,8 @@ Cara mengrun project ini
 
 6. php artisan migrate
 
-7. php artisan serve 
+7. php artisan db:seed
+
+8. php artisan serve 
 
 

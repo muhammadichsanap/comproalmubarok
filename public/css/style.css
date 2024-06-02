@@ -81,6 +81,11 @@ h1 {
     font-weight: 700;
 }
 
+.scrollable {
+  max-height: 200px; /* Adjust this height as needed */
+  overflow-y: auto;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -261,10 +266,41 @@ h1 {
   text-align: center;
 }
 
-.baris-fasil {
-  
+.footer {
+  background-color: #F27F0C;
+  color: #ffffff;
 }
 
+.material-icons{
+  color: #002147;
+}
+
+.hubungi-title {
+  color: #002147;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.kontak {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* Dua kolom dengan ukuran yang sama */
+  grid-template-rows: 1fr 3fr; /* Dua baris dengan ukuran yang sama */
+  gap: 0.2rem; /* Jarak antar kolom dan baris */
+  height: 2rem; /* Tinggi kontainer sesuai tinggi viewport */
+}
+
+.item1 {
+  grid-row: span 2; /* Menggabungkan dua baris untuk kolom pertama */
+  background-color: white;
+}
+
+.item2 {
+  background-color: white;
+}
+
+.item3 {
+  background-color: white;
+}
 
 /* // large screen  */
 
@@ -287,6 +323,10 @@ h1 {
   .card {
     width: 80%; /* Ubah ukuran sesuai kebutuhan pada layar yang lebih besar */
   }
+  .denah {
+    width: 320px;
+  }
+  
 }
 
 /* // Mobile screen  */
@@ -301,5 +341,11 @@ h1 {
   }
   .card {
     width: 70%; /* Ubah ukuran sesuai kebutuhan pada layar yang lebih besar */
+  }
+  .map{
+    margin-inline: 30px;
+  }
+  .denah{
+    width: 100px;
   }
 }

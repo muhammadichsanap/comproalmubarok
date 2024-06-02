@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\FooterController;
 use App\Imports\AlumniImport;
 use App\Exports\AlumniExport;
 use App\Imports\SiswaImport;
@@ -25,7 +26,7 @@ use App\Models\Siswa;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'beranda'])->name('home');
 
 Route::resource('sekolahs', App\Http\Controllers\SekolahController::class);
 
@@ -59,7 +60,8 @@ Route::delete('deleteall', [App\Http\Controllers\SiswaController::class, 'delete
 
 Route::get('/header', [App\Http\Controllers\FrontendController::class, 'header']);
 
-Route::get('/footer', [\App\Http\Controllers\FrontendController::class, 'footer']);
+
+Route::get('/footer', [\App\Http\Controllers\FooterController::class, 'show']);
 
 Route::get('/profilsekolah', [App\Http\Controllers\FrontendController::class, 'profilsekolah']);
 

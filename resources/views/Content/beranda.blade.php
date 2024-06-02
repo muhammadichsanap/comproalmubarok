@@ -17,7 +17,7 @@
                     {{ $visi->first()->visi }}
                 </div>
             </div>
-            <div class="grid-item">Misi
+            <div class="grid-item scrollable">Misi
                 <div class="subtitle2">
                     @foreach ($misi as $index => $item)
                         <p>{{ $index + 1 }}. {{ $item->misi }}</p>
@@ -284,75 +284,137 @@
         </div>
     </div> --}}
 
-<div class="sebar-outer-container mt-5">
+<div class="sebar-outer-container mt-5 mb-5">
     <div class="container">
         <div style="text-align: center;">
             <h1>Peta Penyebaran Murid</h1>
         </div>
-        <div class="mt-5 d-flex justify-content-center">
+        <div class="map mt-5 d-flex justify-content-center">
             <div id="map" style="height: 500px; width: 800px;">
             </div>
         </div>
     </div>
 </div>
 
-<footer class="footer mt-auto py-3 bg-light">
+{{-- <footer class="footer mt-auto py-3">
     <div class="container">
         <span class="text-muted">© 2023 SDIT AL MUBAROKAH. All rights reserved.</span>
     </div>
-</footer>
+</footer> --}}
 
-</div>
-<script>
-    var map = L.map('map').setView([-6.914744, 107.609810], 10);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    var heatData = [
-        @foreach ($siswas as $siswa)
-            [{{ $siswa->latitude }}, {{ $siswa->longitude }}, {{ $siswa->total }}],
-        @endforeach
-    ];
-
-    L.heatLayer(heatData, {
-        radius: 30,
-        blur: 15,
-        maxZoom: 17,
-        gradient: {
-            0.1: 'blue',
-            0.3: 'lime',
-            0.5: 'yellow',
-            0.7: 'orange',
-            1.0: 'red'
-        }
-    }).addTo(map);
-
-    @foreach ($siswas as $siswa)
-        var marker = L.marker([{{ $siswa->latitude }}, {{ $siswa->longitude }}])
-            .addTo(map)
-            .bindPopup("Kecamatan: {{ $siswa->kecamatan }}<br>Jumlah Siswa: {{ $siswa->total }}", {
-                autoPan: false
+<div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('map').setView([-6.914744, 107.609810], 10);
+    
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+    
+            var heatData = [
+                @foreach ($siswas as $siswa)
+                    [{{ $siswa->latitude }}, {{ $siswa->longitude }}, {{ $siswa->total }}],
+                @endforeach
+            ];
+    
+            L.heatLayer(heatData, {
+                radius: 30,
+                blur: 15,
+                maxZoom: 17,
+                gradient: {
+                    0.1: 'blue',
+                    0.3: 'lime',
+                    0.5: 'yellow',
+                    0.7: 'orange',
+                    1.0: 'red'
+                }
+            }).addTo(map);
+    
+            @foreach ($siswas as $siswa)
+                var marker = L.marker([{{ $siswa->latitude }}, {{ $siswa->longitude }}])
+                    .addTo(map)
+                    .bindPopup("Kecamatan: {{ $siswa->kecamatan }}<br>Jumlah Siswa: {{ $siswa->total }}", {
+                        autoPan: false
+                    });
+    
+                // Menambahkan event listener untuk touchstart dan mouseover
+                marker.on('touchstart mouseover', function(e) {
+                    this.openPopup();
+                });
+    
+                marker.on('mouseout', function(e) {
+                    this.closePopup();
+                });
+    
+                marker.on('click', function(e) {
+                    e.originalEvent.preventDefault();
+                    e.originalEvent.stopPropagation();
+                });
+            @endforeach
+    
+            map.on('click', function(e) {
+                e.originalEvent.preventDefault();
+                e.originalEvent.stopPropagation();
             });
-
-        marker.on('mouseover', function(e) {
-            this.openPopup();
         });
-
-        marker.on('mouseout', function(e) {
-            this.closePopup();
-        });
-
-        marker.on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        });
-    @endforeach
-
-    map.on('click', function(e) {
-        e.preventDefault();
-        e.originalEvent.stopPropagation();
-    });
-</script>
+    </script>
 </div>
+
+<div class="hubungi container w-75 mx-auto">
+    <div class="text-center">
+        <h1>Hubungi Kami</h1>
+    </div>
+    <div class="mt-5 row justify-content-center">
+        <div class="col-md-6 mb-4">
+            <p class="hubungi-title">Denah Lokasi</p>
+            <div class="ratio ratio-4x3">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4392842299944!2d107.77222097573984!3d-6.957395568118379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c485fb2626ed%3A0x14965484d4e29006!2sKB-TK-SD%20IT%20Al%20Mubarokah!5e0!3m2!1sid!2sid!4v1717293934082!5m2!1sid!2sid"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="hubungi-title">Kontak</p>
+            <div class="kontak mb-4 d-flex align-items-center" style="margin-top: 20px; margin-bottom: 100px;">
+                <i class="bi bi-envelope-fill me-3"></i>
+                <div>
+                    <strong>Email</strong><br>
+                    {{ $sekolah->email }}
+                </div>
+            </div>
+            <div class="kontak mb-4 d-flex align-items-center" style="margin-top: 50px; margin-bottom: 20px;">
+                <i class="bi bi-map-fill me-3"></i>
+                <div>
+                    <strong>Alamat</strong><br>
+                    {{ $sekolah->alamat_sekolah }}
+                </div>
+            </div>
+            <div class="kontak mb-4 d-flex align-items-center" style="margin-top: 50px; margin-bottom: 20px;">
+                <i class="bi bi-telephone-fill me-3"></i>
+                <div>
+                    <strong>No Whatsapp</strong><br>
+                    {{ $sekolah->no_wa }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+<script>
+    function initMap2() {
+        var mapOptions = {
+            center: {
+                lat: -6.957177246469701,
+                lng: 107.77484954028525
+            },
+            zoom: 8
+        };
+        var map2 = new google.maps.Map(document.getElementById('map2'), mapOptions);
+    };
+</script> --}}
+
+
+
+@include('Component.footer')

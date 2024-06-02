@@ -104,3 +104,32 @@
     width: 100%;
     text-align: center;
 }
+
+/* Custom CSS */
+.social-icons a {
+    margin: 0 10px;
+    color: #fff;
+  }
+  
+  .card-agenda {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .card-agenda .card-body {
+    padding: 10px;
+  }
+  
+  .card-agenda img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-agenda .card-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-agenda .card-text {
+    font-size: 0.875rem;
+  }

@@ -67,6 +67,7 @@ class FrontendController extends Controller
             $tendiks = Tendik::take(6)->get();
             $programs = Program::all();
             $fasilitas = Fasilitas::take(8)->get();
+            $sekolah = Sekolah::first();
             $siswas = Siswa::select('kecamatan', DB::raw('count(*) as total'))
             ->groupBy('kecamatan')
             ->get();
@@ -78,7 +79,7 @@ class FrontendController extends Controller
             return $siswa;
             });
 
-            return view('Content.beranda', ['kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'prestasis' => $prestasis, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas, 'visi' => $visi, 'misi' => $misi, 'tentang' => $tentang]);
+            return view('Content.beranda', ['kegiatans' => $kegiatans, 'ekstrakulikuler' => $ekstrakulikuler, 'prestasis' => $prestasis, 'tendiks' => $tendiks, 'fasilitas' => $fasilitas, 'programs' => $programs, 'siswas' => $siswas, 'visi' => $visi, 'misi' => $misi, 'tentang' => $tentang, 'sekolah' => $sekolah]);
     }
 
     private function getLatitude($kecamatan)
@@ -159,5 +160,12 @@ class FrontendController extends Controller
         $fasilitas = Fasilitas::all();
 
         return view('Content.fasilitasSekolah', ['fasilitas' => $fasilitas, 'programs' => $programs]);
+    }
+
+    public function Footer()
+    {
+        $tentang = Tentang::first();
+        $kegiatans = Kegiatan::take(4)->get(); 
+        return view('Component.footer', ['tentang' => $tentang, 'kegiatans' => $kegiatans]);
     }
 }

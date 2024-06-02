@@ -1,127 +1,68 @@
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-  <!-- Section: Social media -->
-
-  <!-- Section: Social media -->
-
   <!-- Section: Links  -->
   <section class="footer">
     <div class="container text-center text-md-start mt-5">
       <!-- Grid row -->
       <div class="row mt-3">
         <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4 pt-4" style="text-align: justify;">
           <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
-          </h6>
-          <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
-          </p>
+          <img class="img-fluid rounded-3 my-1" src="/images/v267_2456.png" width="100px">
+          @foreach ($tentang as $item)
+            <p>{{ $item->tentang }}</p>
+          @endforeach
+
+          <!-- Ikon Media Sosial -->
+          <div class="social-icons" style="margin-top: 20px;">
+            <a href="https://www.facebook.com/sditalmubarokah/?locale=id_ID" class="me-4 text-reset" style="margin: 0 10px; color: #fff;">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/@sditalmubarokah2880" class="me-4 text-reset" style="margin: 0 10px; color: #fff;">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
         </div>
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        <div class="col-md-8 col-lg-8 col-xl-8 mx-auto mb-4" style="padding-left: 50px;">
           <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Products
+          <h6 class="text-uppercase fw-bold mb-4 pt-4 text-center">
+              INFO SEKOLAH
           </h6>
-          <p>
-            <a href="#!" class="text-reset">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
-          </p>
+          <div class="row">
+              @foreach ($kegiatans->take(2) as $index => $item)
+                  <div class="col-22 mb-3"> 
+                      <div class="card card-agenda d-flex flex-row align-items-center" style="background-color: transparent; border: none;">
+                          <img src="{{ asset('images/' . $item->gambar) }}" class="img-fluid rounded-start" alt="{{ $item->nama_kegiatan }}" style="max-width: 20%; height: auto; margin-right: 10px;">
+                          <div class="card-body" style="background-color: transparent; padding: 10px;">
+                              <h5 class="card-title fs-5" style="font-size: 1rem; margin-bottom: 0.5rem;">{{ $item->nama_kegiatan }}</h5>
+                              <p class="card-text" style="font-size: 0.875rem;"><small class="text-body-secondary">Terakhir diperbarui {{ $item->updated_at->diffForHumans() }}</small></p>
+                              <p class="card-text" style="font-size: 0.875rem;">{{ $item->keterangan }}</p>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+        </div>          <!-- Grid column -->          <!-- Grid column -->
+          </div>
         </div>
-        <!-- Grid column -->
+      </section>
+      <!-- Section: Links  -->
 
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Pricing</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            info@example.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-        </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: Links  -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="background-color: #F27F0C">
-    <div class="container w-65">
-<!-- Left -->
-<div class="me-5 d-none d-lg-block" >
-    <span style="color: #ffff">Get connected with us on social networks:</span>
-  </div>
-  <!-- Left -->
-
-  <!-- Right -->
-  <div class="material-icons">
-    <a href="" class="me-4 text-reset">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="" class="me-4 text-reset">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <a href="" class="me-4 text-reset">
-      <i class="fab fa-google"></i>
-    </a>
-    <a href="" class="me-4 text-reset">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="" class="me-4 text-reset">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="" class="me-4 text-reset">
-      <i class="fab fa-github"></i>
-    </a>
-  </div>
-  <!-- Right -->
-</section>
-    </div>
-    
+  <!-- Section: Social media -->
   <!-- Copyright -->
   <div class="text-left p-4" style="background-color: #F27F0C">
     <div class="container w-65" style="color: #ffff">
-        © 2023 SDIT AL MUBAROKAH. All rights reserved.
+      © 2024 Team 6. All rights reserved
     </div>
   </div>
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
+</head>

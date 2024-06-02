@@ -376,24 +376,23 @@
                 <p class="hubungi-title">Kontak</p>
                 <div class="kontak container mb-5">
                     <div class="item1 align-self-center icon"><i class="bi bi-envelope-fill"></i></div>
-                    <div class="item2">Email</div>
-                    <div class="item3">sditalmubarokah@gmail.com</div>
+                    <div class="item2"><strong>Email</strong></div>
+                    <div class="item3">{{ $sekolah->email }}</div>
                 </div>
                 <div class="kontak container mb-5">
                     <div class="item1 align-self-center icon"><i class="bi bi-map-fill"></i></div>
-                    <div class="item2">Alamat</div>
-                    <div class="item3">Jl. Talun No.13, Jelegong, Kec. Rancaekek, Kabupaten Bandung, Jawa Barat 40394
-                    </div>
+                    <div class="item2"><strong>Alamat</strong></div>
+                    <div class="item3">{{ $sekolah->alamat_sekolah }}</div>
                 </div>
                 <div class="kontak container mb-5">
                     <div class="item1 align-self-center icon"><i class="bi bi-telephone-fill"></i></div>
-                    <div class="item2">No Telfon</div>
-                    <div class="item3">Lorem Ipsum</div>
+                    <div class="item2"><strong>No Whatsapp</strong></div>
+                    <div class="item3">{{ $sekolah->no_wa }}</div>
                 </div>
                 <div class="kontak container mb-5">
                     <div class="item1 align-self-center icon"><i class="bi bi-envelope-fill"></i></div>
-                    <div class="item2">Email</div>
-                    <div class="item3">Lorem Ipsum</div>
+                    <div class="item2"><strong>Email</strong></div>
+                    <div class="item3">{{ $sekolah->email }}</div>
                 </div>
 
             </div>

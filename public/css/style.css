@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *{
     font-family: poppins;
@@ -299,4 +300,34 @@ h1 {
   .card {
     width: 70%; /* Ubah ukuran sesuai kebutuhan pada layar yang lebih besar */
   }
+}
+
+.footer {
+  background-color: #F27F0C;
+  color: #ffffff;
+}
+
+.footer .card-agenda {
+  background-color: #F27F0C; /* Sesuaikan dengan warna footer Anda */
+  color: #fff; /* Jika diperlukan, sesuaikan warna teks */
+  border: none; /* Hilangkan border jika diperlukan */
+}
+.footer .card-agenda .card-body {
+  padding: 15px; /* Sesuaikan padding jika diperlukan */
+}
+
+.card-agenda .row.g-0 {
+  display: flex;
+  align-items: center;
+}
+
+.card-agenda .col-md-4,
+.card-agenda .col-md-8 {
+  display: flex;
+  align-items: center;
+}
+
+.line-profil2 {
+  color: #fbf9f7;
+  width: 205%; 
 }

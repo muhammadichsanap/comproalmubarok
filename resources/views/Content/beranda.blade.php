@@ -303,98 +303,99 @@
 </footer> --}}
 
 <div>
-    <script class="mb-5">
-        var map = L.map('map').setView([-6.914744, 107.609810], 10);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        var heatData = [
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('map').setView([-6.914744, 107.609810], 10);
+    
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+    
+            var heatData = [
+                @foreach ($siswas as $siswa)
+                    [{{ $siswa->latitude }}, {{ $siswa->longitude }}, {{ $siswa->total }}],
+                @endforeach
+            ];
+    
+            L.heatLayer(heatData, {
+                radius: 30,
+                blur: 15,
+                maxZoom: 17,
+                gradient: {
+                    0.1: 'blue',
+                    0.3: 'lime',
+                    0.5: 'yellow',
+                    0.7: 'orange',
+                    1.0: 'red'
+                }
+            }).addTo(map);
+    
             @foreach ($siswas as $siswa)
-                [{{ $siswa->latitude }}, {{ $siswa->longitude }}, {{ $siswa->total }}],
-            @endforeach
-        ];
-
-        L.heatLayer(heatData, {
-            radius: 30,
-            blur: 15,
-            maxZoom: 17,
-            gradient: {
-                0.1: 'blue',
-                0.3: 'lime',
-                0.5: 'yellow',
-                0.7: 'orange',
-                1.0: 'red'
-            }
-        }).addTo(map);
-
-        @foreach ($siswas as $siswa)
-            var marker = L.marker([{{ $siswa->latitude }}, {{ $siswa->longitude }}])
-                .addTo(map)
-                .bindPopup("Kecamatan: {{ $siswa->kecamatan }}<br>Jumlah Siswa: {{ $siswa->total }}", {
-                    autoPan: false
+                var marker = L.marker([{{ $siswa->latitude }}, {{ $siswa->longitude }}])
+                    .addTo(map)
+                    .bindPopup("Kecamatan: {{ $siswa->kecamatan }}<br>Jumlah Siswa: {{ $siswa->total }}", {
+                        autoPan: false
+                    });
+    
+                // Menambahkan event listener untuk touchstart dan mouseover
+                marker.on('touchstart mouseover', function(e) {
+                    this.openPopup();
                 });
-
-            marker.on('mouseover', function(e) {
-                this.openPopup();
+    
+                marker.on('mouseout', function(e) {
+                    this.closePopup();
+                });
+    
+                marker.on('click', function(e) {
+                    e.originalEvent.preventDefault();
+                    e.originalEvent.stopPropagation();
+                });
+            @endforeach
+    
+            map.on('click', function(e) {
+                e.originalEvent.preventDefault();
+                e.originalEvent.stopPropagation();
             });
-
-            marker.on('mouseout', function(e) {
-                this.closePopup();
-            });
-
-            marker.on('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            });
-        @endforeach
-
-        map.on('click', function(e) {
-            e.preventDefault();
-            e.originalEvent.stopPropagation();
         });
     </script>
 </div>
 
-<div class="hubungi container w-65 mx-auto">
-    <div style="text-align: center;">
+<div class="hubungi container w-75 mx-auto">
+    <div class="text-center">
         <h1>Hubungi Kami</h1>
     </div>
-    <div class="mt-5 d-flex justify-content-center">
-        <div class="row ">
-            <div class="denah col">
-                <p class="hubungi-title">Denah Lokasi</p>
+    <div class="mt-5 row justify-content-center">
+        <div class="col-md-6 mb-4">
+            <p class="hubungi-title">Denah Lokasi</p>
+            <div class="ratio ratio-4x3">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4392842299944!2d107.
-                77222097573984!3d-6.957395568118379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
-                1!3m3!1m2!1s0x2e68c485fb2626ed%3A0x14965484d4e29006!2sKB-TK-SD%20IT%20Al%20Mubarokah!5e0!3m2!1sid!2sid!4v1717293934082!5m2!1sid!2sid"
-                    width="420" height="325" style="border:0;" allowfullscreen="" loading="lazy"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4392842299944!2d107.77222097573984!3d-6.957395568118379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c485fb2626ed%3A0x14965484d4e29006!2sKB-TK-SD%20IT%20Al%20Mubarokah!5e0!3m2!1sid!2sid!4v1717293934082!5m2!1sid!2sid"
+                    style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="col align-self-center">
-                <p class="hubungi-title">Kontak</p>
-                <div class="kontak container mb-5">
-                    <div class="item1 align-self-center icon"><i class="bi bi-envelope-fill"></i></div>
-                    <div class="item2"><strong>Email</strong></div>
-                    <div class="item3">{{ $sekolah->email }}</div>
+        </div>
+        <div class="col-md-6">
+            <p class="hubungi-title">Kontak</p>
+            <div class="kontak mb-4 d-flex align-items-center" style="margin-top: 20px; margin-bottom: 100px;">
+                <i class="bi bi-envelope-fill me-3"></i>
+                <div>
+                    <strong>Email</strong><br>
+                    {{ $sekolah->email }}
                 </div>
-                <div class="kontak container mb-5">
-                    <div class="item1 align-self-center icon"><i class="bi bi-map-fill"></i></div>
-                    <div class="item2"><strong>Alamat</strong></div>
-                    <div class="item3">{{ $sekolah->alamat_sekolah }}</div>
+            </div>
+            <div class="kontak mb-4 d-flex align-items-center" style="margin-top: 50px; margin-bottom: 20px;">
+                <i class="bi bi-map-fill me-3"></i>
+                <div>
+                    <strong>Alamat</strong><br>
+                    {{ $sekolah->alamat_sekolah }}
                 </div>
-                <div class="kontak container mb-5">
-                    <div class="item1 align-self-center icon"><i class="bi bi-telephone-fill"></i></div>
-                    <div class="item2"><strong>No Whatsapp</strong></div>
-                    <div class="item3">{{ $sekolah->no_wa }}</div>
+            </div>
+            <div class="kontak mb-4 d-flex align-items-center" style="margin-top: 50px; margin-bottom: 20px;">
+                <i class="bi bi-telephone-fill me-3"></i>
+                <div>
+                    <strong>No Whatsapp</strong><br>
+                    {{ $sekolah->no_wa }}
                 </div>
-                <div class="kontak container mb-5">
-                    <div class="item1 align-self-center icon"><i class="bi bi-envelope-fill"></i></div>
-                    <div class="item2"><strong>Email</strong></div>
-                    <div class="item3">{{ $sekolah->email }}</div>
-                </div>
-
             </div>
         </div>
     </div>

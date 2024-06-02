@@ -133,3 +133,49 @@
   .card-agenda .card-text {
     font-size: 0.875rem;
   }
+
+/* Style untuk layar besar dan desktop */
+@media (min-width: 992px) {
+    .hubungi .row {
+        flex-direction: row;
+    }
+
+    .hubungi .col {
+        flex: 1; /* Setiap kolom mengambil ruang yang sama */
+    }
+
+    .hubungi .denah {
+        padding-right: 20px; /* Tambahkan padding di sisi kanan untuk denah */
+    }
+}
+
+/* Style untuk tablet */
+@media (max-width: 991px) and (min-width: 768px) {
+    .hubungi .row {
+        flex-direction: column;
+    }
+
+    .hubungi .denah,
+    .hubungi .col {
+        width: 100%; /* Setiap kolom mengambil lebar penuh */
+        margin-bottom: 20px; /* Tambahkan margin di bawah setiap kolom */
+    }
+}
+
+/* Style untuk mobile */
+@media (max-width: 767px) {
+    .hubungi .row {
+        flex-direction: column;
+    }
+
+    .hubungi .denah,
+    .hubungi .col {
+        width: 100%; /* Setiap kolom mengambil lebar penuh */
+        margin-bottom: 20px; /* Tambahkan margin di bawah setiap kolom */
+    }
+
+    .hubungi iframe {
+        width: 100%; /* Buat iframe peta menjadi lebar penuh */
+        height: 200px; /* Sesuaikan tinggi iframe */
+    }
+}

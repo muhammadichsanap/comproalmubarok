@@ -26,7 +26,7 @@ use App\Models\Siswa;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'beranda'])->name('home');
 
 Route::resource('sekolahs', App\Http\Controllers\SekolahController::class);
 

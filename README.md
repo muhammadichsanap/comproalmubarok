@@ -1,5 +1,4 @@
-Harap run dulu WAJIB!!
-Cara mengrun project ini
+How to run this project
 
 1. git clone https://github.com/muhammadichsanap/comproalmubarok.git
 
@@ -14,7 +13,9 @@ Cara mengrun project ini
 6. php artisan migrate
 
 7. php artisan db:seed
+   id = ichsan
+   password = password
 
-8. php artisan serve 
+9. php artisan serve 
 
 

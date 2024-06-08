@@ -2,7 +2,7 @@ How to run this project
 
 1. git clone https://github.com/muhammadichsanap/comproalmubarok.git
 
-2. cp .env.example .env -> lalu sesuaikan db nya
+2. cp .env.example .env -> adjust the database
 
 3. composer install
 
